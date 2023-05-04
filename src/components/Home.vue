@@ -1,26 +1,24 @@
 <template>
-    <div>
-      <app-master v-model="selectedMasters"></app-master>
-      <app-chatbox :selected-masters="selectedMasters"></app-chatbox>
-    </div>
-  </template>
-  
-  <script>
-  import AppMaster from '@/components/Masters.vue';
-  import AppChatbox from '@/components/Chatbox.vue';
+  <div>
+    <app-masters v-model="selectedMasters"></app-masters>
+    <app-chatbox :selected-masters="selectedMasters"></app-chatbox>
+  </div>
+</template>
 
-  
-  export default {
-    name: 'HomePage',
-    components: {
-      AppMaster,
-      AppChatbox,
-    },
-    data() {
-      return {
-        selectedMasters: [],
-      };
-    },
-  };
-  </script>
-  
+<script>
+import AppMasters from '@/components/Masters.vue';
+import AppChatbox from '@/components/Chatbox.vue';
+
+export default {
+  name: 'HomePage',
+  components: {
+    AppMasters,
+    AppChatbox,
+  },
+  data() {
+    return {
+      selectedMasters: [],
+    };
+  },
+};
+</script>

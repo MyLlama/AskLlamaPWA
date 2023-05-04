@@ -6,8 +6,9 @@
   </template>
   
   <script>
-  import AppMaster from './Masters.vue';
-  import AppChatbox from './Chatbox.vue';
+  import AppMaster from '@/components/Masters.vue';
+  import AppChatbox from '@/components/Chatbox.vue';
+
   
   export default {
     name: 'HomePage',

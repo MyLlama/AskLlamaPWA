@@ -78,6 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .masters h2 {
@@ -88,21 +89,24 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem;
   margin: 0 auto;
   max-height: 300px;
   overflow: scroll;
   background: antiquewhite;
   border-radius: 5%;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .master {
   position: relative;
-  margin: 0.5rem;
+  flex-basis: calc(15% - 0.5rem);
+  box-sizing: border-box;
 }
 
 .master img {
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -116,12 +120,15 @@ export default {
   right: -5px;
   bottom: -5px;
   border: 1px solid #f79311;
-  border-radius: 3%;
+  border-radius: 25%;
   box-shadow: 2px 2px 1px 1px #f79311;
 }
-.master-image {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
+
+@media (max-width: 768px) {
+  .master {
+    flex-basis: calc(10% - 0.5rem);
+  }
 }
+
+
 </style>

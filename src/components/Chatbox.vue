@@ -21,7 +21,7 @@
 
               }}:</strong
             >
-            <pre>{{ message.text }}</pre>
+            <pre class="pre-wrap">{{ message.text }}</pre>
           </div>
         </div>
       </transition>
@@ -36,7 +36,7 @@
         ref="questionInput"
       />
       <button class="send-button" @click="askQuestion">
-        <i class="fas fa-paper-plane"></i> Send
+        <i class="fa fa-paper-plane"></i>
       </button>
     </form>
   </div>
@@ -138,13 +138,12 @@ async sendMessage() {
 
 <style scoped>
 .messages {
-  height: 400px;
+  height: 60vh;
   overflow-y: auto;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   padding: 1rem;
   text-align: left;
-  overflow-x: hidden;
   word-wrap: break-word;
   white-space: pre-wrap;
 }
@@ -189,7 +188,7 @@ input {
 }
 
 .send-button {
-  background-color: #4caf50;
+  background-color: #90ee90;
   border: none;
   color: white;
   text-align: center;
@@ -206,12 +205,17 @@ input {
   margin-bottom: 1rem;
 }
 
+.pre-wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .send-button:hover {
-  background-color: #1976d2;
+  background-color: #77dd77;
 }
 
 .send-button i {
-  margin-right: 0.5rem;
+  margin-right: 0 rem;
 }
 
 .send-button {
@@ -263,10 +267,19 @@ input {
     width: 20px;
     height: 20px;
   }
+  .chatbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto; /* Add this line to enable vertical scrolling */
+  }
 
   .send-button {
     padding: 0.3rem 0.8rem;
     font-size: 0.8rem;
+  }
+  .send-button:hover {
+    background-color: #3f9a40;
   }
 }
 </style>

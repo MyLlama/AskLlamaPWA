@@ -1,7 +1,10 @@
 <template>
   <div>
     <app-masters v-model="selectedMasters"></app-masters>
-    <app-chatbox :selected-masters="selectedMasters"></app-chatbox>
+    <app-chatbox
+      :selected-masters="selectedMasters"
+      :selectedMastersCount="selectedMasters.length"
+    ></app-chatbox>
   </div>
 </template>
 

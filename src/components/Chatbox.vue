@@ -1,24 +1,30 @@
 <template>
   <div class="chatbox">
+    <p>Selected Masters: {{ selectedMastersCount }}</p>
     <div class="messages">
-      <div
-        v-for="(message, index) in messages"
-        :key="index"
-        :class="[message.type === 'user' ? 'user-message' : 'master-message']"
-        v-bind:style="{ backgroundImage: message.type === 'master' ? 'url(' + message.image + ')' : '' }"
-      >
-        <img :src="message.authorImage" alt="Author" class="author-image" />
-        <div v-if="message.type === 'master'" class="master-message">
-        <img :src="message.image" :alt="message.author" class="message-avatar" />
-        <strong>{{ message.author }}:</strong>
-      </div>
-      <div v-else class="user-message">
-        <img :src="userAvatar" alt="User" class="message-avatar" />
-        <strong>User:</strong>
-      </div>
-      {{ message.text }}
+      <transition name="typing" mode="out-in">
+        <div>
+          <div
+            v-for="(message, index) in messages"
+            :key="index"
+            :class="[message.type === 'user' ? 'user-message' : 'master-message']"
+          > 
+            <img
+              v-if="message.type === 'master'"
+              :src="message.image"
+              :alt="message.author"
+              class="message-avatar"
+            />
+            <img v-else :src="userAvatar" alt="User" class="message-avatar" />
+            <strong
+              >{{ message.type === 'master' ? message.author : 'User'
 
-      </div>
+              }}:</strong
+            >
+            <pre>{{ message.text }}</pre>
+          </div>
+        </div>
+      </transition>
     </div>
     <form @submit.prevent="sendMessage">
       <input
@@ -32,7 +38,6 @@
       <button class="send-button" @click="askQuestion">
         <i class="fas fa-paper-plane"></i> Send
       </button>
-
     </form>
   </div>
 </template>
@@ -46,16 +51,32 @@ export default {
       type: Array,
       default: () => [],
     },
+    selectedMastersCount: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
       inputMessage: '',
       messages: [],
+      typingMessage: '',
       userAvatar: 'https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g',
     };
   },
   methods: {
-    async getGptResponse(prompt, master) {
+    typeMessage(message) {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < message.length) {
+        this.typingMessage += message[index];
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100); // Adjust the typing speed by changing this value (milliseconds)
+  },
+  async getGptResponse(prompt, master) {
   console.log('Getting GPT response for prompt:', prompt);
 
   const apiKey = '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';
@@ -93,14 +114,19 @@ async sendMessage() {
   this.messages.push({ authorImage: userAvatar, text: userMessage, type: 'user' });
   this.inputMessage = '';
 
-  for (const master of this.selectedMasters) {
-    // Call the ChatGPT API and get response
-    const gptResponse = await this.getGptResponse(userMessage, master);
+  const masterResponses = await Promise.all(
+    this.selectedMasters.map(async (master) => {
+      // Call the ChatGPT API and get response
+      const gptResponse = await this.getGptResponse(userMessage, master);
+      return { author: master.name, image: master.image, text: gptResponse, type: 'master' };
+    })
+  );
 
-    // Add the response to the messages array
-    this.messages.push({ author: master.name, image: master.image, text: gptResponse, type: 'master' });
+  for (const masterResponse of masterResponses) {
+    this.messages.push(masterResponse);
   }
 }
+
 
   },
   mounted() {
@@ -118,6 +144,16 @@ async sendMessage() {
   border: 1px solid #ccc;
   padding: 1rem;
   text-align: left;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .masters-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
 }
 .author-image {
   width: 30px;
@@ -134,22 +170,15 @@ async sendMessage() {
   margin-right: 5px;
 }
 
-.user-message {
-  color: blue;
+form {
+  display: flex;
 }
-  .master-message {
-    color: green;
-  }
-  
-  form {
-    display: flex;
-  }
-  
-  input {
-    flex-grow: 1;
-    margin-right: 1rem;
-  }
-  .question-input {
+
+input {
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+.question-input {
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
@@ -157,6 +186,32 @@ async sendMessage() {
   border: 1px solid #ccc;
   border-radius: 3px;
   outline: none;
+}
+
+.send-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 8px 16px;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.send-button:hover {
+  background-color: #1976d2;
+}
+
+.send-button i {
+  margin-right: 0.5rem;
 }
 
 .send-button {
@@ -183,6 +238,35 @@ async sendMessage() {
 .master-message + .user-message {
   margin-left: 5px;
 }
+.typing-enter-active,
+.typing-leave-active {
+  transition: all 0.3s;
+}
 
-  </style>
-  
+.typing-enter,
+.typing-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@media (max-width: 767px) {
+  .messages {
+    height: 300px;
+  }
+
+  .author-image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .message-avatar {
+    width: 20px;
+    height: 20px;
+  }
+
+  .send-button {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+</style>

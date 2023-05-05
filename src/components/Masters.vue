@@ -1,6 +1,6 @@
 <template>
   <div class="masters">
-    <h2>Select a Master to chat with:</h2>
+    <h2>Select a Master to chat with</h2>
     <div class="masters-list">
       <div
         v-for="(master, index) in masters"
@@ -27,6 +27,7 @@ export default {
   },
   data() {
   return {
+    selectedMastersCount: 0,
     masters: [
       { name: 'Krishna', image: 'https://i.ibb.co/zRscGNV/Krishna.jpg', selected: false, prompt: 'You are Lord Krishna, known for your teachings on righteousness, action, and devotion in the Bhagavad Gita, and your playful nature. Answer the question below as Lord Krishna would.' },
       { name: 'Jesus', image: 'https://i.ibb.co/8jdfWc1/Christ.jpg', selected: false, prompt: 'You are Jesus Christ, a central figure in Christianity, believed by Christians to be the son of God. Your life and teachings are recorded in the New Testament of the Bible. You are known for your teachings of love, compassion, and forgiveness. Answer the question below as Jesus.' },
@@ -50,10 +51,24 @@ export default {
   },
   methods: {
     toggleMaster(master) {
-      master.selected = !master.selected;
-      const selectedMasters = this.masters.filter((m) => m.selected);
-      this.$emit('update:modelValue', selectedMasters);
-    },
+    // Check if the master is already selected
+    if (master.selected) {
+      master.selected = false;
+      this.selectedMastersCount -= 1;
+    } else {
+      // Only allow selection if there are less than 3 masters selected
+      if (this.selectedMastersCount < 5) {
+        master.selected = true;
+        this.selectedMastersCount += 1;
+      } else {
+        // Show an alert if the user tries to select more than 3 masters
+        alert('You can only select up to 5 masters.');
+      }
+    }
+
+    const selectedMasters = this.masters.filter((m) => m.selected);
+    this.$emit('update:modelValue', selectedMasters);
+  },
   },
 };
 </script>
@@ -74,6 +89,10 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
+  max-height: 300px;
+  overflow: scroll;
+  background: antiquewhite;
+  border-radius: 5%;
 }
 
 .master {
@@ -90,14 +109,15 @@ export default {
 }
 
 .master.selected:after {
-  content: '';
+  content: "";
   position: absolute;
   top: -5px;
   left: -5px;
   right: -5px;
   bottom: -5px;
-  border: 5px solid #4DBA87;
-  border-radius: 50%;
+  border: 1px solid #f79311;
+  border-radius: 3%;
+  box-shadow: 2px 2px 1px 1px #f79311;
 }
 .master-image {
   width: 100%;

@@ -9,7 +9,7 @@
         class="master"
         @click="toggleMaster(master)"
       >
-        <img :src="imageUrl" :alt="master.name" />
+        <img :src="master.image" :alt="master.name" />
         <p>{{ master.name }}</p>
       </div>
     </div>
@@ -47,7 +47,6 @@ export default {
       { name: 'Freud', image: 'https://i.ibb.co/3cR6kKd/freud-rountable-1-1050x700-1.webp', selected: false, prompt: 'You are Sigmund Freud, an Austrian neurologist and founder of psychoanalysis. Your teachings emphasize the importance of the unconscious mind, childhood experiences, and the role of sexuality in shaping human behavior. Answer the question below as Freud would.' },
       { name: 'Carl jung', image: 'https://i.ibb.co/NYGc6J4/Gustav-Jung-1.jpg', selected: false, prompt: 'You are Carl Jung, a Swiss psychiatrist and founder of analytical psychology. Your teachings emphasize the importance of the unconscious mind, archetypes, and the pursuit of individuation and self-knowledge. Answer the question below as Carl Jung would.' },
       ],
-      imageUrl: '/public/img/Buddha.jpg',
     };
   },
   methods: {

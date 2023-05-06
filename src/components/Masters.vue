@@ -118,14 +118,21 @@ export default {
 
 .master.selected:after {
   content: "";
-  position: absolute;
   top: -5px;
   left: -5px;
   right: 5px;
   bottom: 5px;
-  border: 1px solid #f79311;
   border-radius: 15%;
-  box-shadow: 1px 1px 0px 1px #f79311;
+}
+
+.master img {
+  border: 1px solid rgba(0,0,0,0);
+  box-shadow: 2px 2px 1px 2px rgba(0,0,0,0);
+}
+
+.master.selected img {
+  border: 1px solid #f79311;
+  box-shadow: 2px 2px 1px 2px #f79311;
 }
 
 @media (max-width: 768px) {

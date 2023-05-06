@@ -39,8 +39,9 @@
         @keyup.enter="sendMessage"
         placeholder="Ask a question..."
         ref="questionInput"
+        :disabled="!selectedMasters.length || loading"
       />
-      <button class="send-button" @click="askQuestion">
+      <button class="send-button" @click="askQuestion" :disabled="!selectedMasters.length || loading">
         <i class="fa fa-paper-plane"></i>
       </button>
     </form>
@@ -85,7 +86,7 @@ export default {
   async getGptResponse(prompt, master) {
   console.log('Getting GPT response for prompt:', prompt);
 
-  const apiKey = 'API_KEY';
+  const apiKey = 'sk-4pd8eECvabhGth2KttEsT3BlbkFJHtjF8oolCROJEKWl7doI';
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
   const headers = {
     'Content-Type': 'application/json',

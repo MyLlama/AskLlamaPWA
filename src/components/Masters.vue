@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: 'AppMasters',
   props: {
@@ -51,24 +52,29 @@ export default {
   },
   methods: {
     toggleMaster(master) {
-    // Check if the master is already selected
-    if (master.selected) {
-      master.selected = false;
-      this.selectedMastersCount -= 1;
-    } else {
-      // Only allow selection if there are less than 3 masters selected
-      if (this.selectedMastersCount < 5) {
-        master.selected = true;
-        this.selectedMastersCount += 1;
+      // Check if the master is already selected
+      if (master.selected) {
+        master.selected = false;
+        this.selectedMastersCount -= 1;
       } else {
-        // Show an alert if the user tries to select more than 3 masters
-        alert('You can only select up to 5 masters.');
+        // Only allow selection if there are less than 3 masters selected
+        if (this.selectedMastersCount < 5) {
+          master.selected = true;
+          this.selectedMastersCount += 1;
+        } else {
+          // Show a beautiful alert if the user tries to select more than 5 masters
+          Swal.fire({
+            icon: 'info',
+            title: 'Selection Limit Reached',
+            text: 'You can only select up to 5 masters.',
+            confirmButtonText: 'OK',
+          });
+        }
       }
-    }
 
-    const selectedMasters = this.masters.filter((m) => m.selected);
-    this.$emit('update:modelValue', selectedMasters);
-  },
+      const selectedMasters = this.masters.filter((m) => m.selected);
+      this.$emit('update:modelValue', selectedMasters);
+    },
   },
 };
 </script>

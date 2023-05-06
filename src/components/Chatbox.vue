@@ -85,7 +85,7 @@ export default {
   async getGptResponse(prompt, master) {
   console.log('Getting GPT response for prompt:', prompt);
 
-  const apiKey = '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';
+  const apiKey = 'API_KEY';
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
   const headers = {
     'Content-Type': 'application/json',

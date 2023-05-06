@@ -10,6 +10,15 @@
         <h1>Ask Llama</h1>
         <h2>Timeless Answers for Modern Problems</h2>
       </div>
+      <button
+        v-if="showInstallButton"
+        id="install-button"
+        class="install-button"
+        @click="installApp"
+      >
+        Install
+      </button>
+
     </div>
   </header>
 </template>
@@ -17,10 +26,59 @@
 <script>
 export default {
   name: 'AppHeader',
+  data() {
+    return {
+      deferredPrompt: null,
+      showInstallButton: false,
+    };
+  },
+  mounted() {
+    window.addEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+  },
+  beforeUnmount() { // Update this line
+    window.removeEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+  },
+  methods: {
+    handleBeforeInstallPrompt(event) {
+      event.preventDefault();
+      this.deferredPrompt = event;
+      this.showInstallButton = true;
+    },
+    async installApp() {
+      if (this.deferredPrompt) {
+        this.deferredPrompt.prompt();
+        const choiceResult = await this.deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        this.deferredPrompt = null;
+        this.showInstallButton = false;
+      }
+    },
+  },
 };
+
 </script>
 
 <style scoped>
+.install-button {
+  display: none;
+  background-color: #ffffff;
+  border: none;
+  color: #f79311;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 5px;
+}
+
+.install-button.show-install {
+  display: block;
+}
+
 .header {
   background-color: #f79311;
   color: white;
@@ -59,5 +117,18 @@ h1 {
 h2 {
   font-size: 20px;
   font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    width: 40px!important;
+  }
+  .masters-list {
+    max-height: 110px!important;
+  }
+  .header-container {
+    justify-content: left;
+    flex-wrap: inherit;
+  }
 }
 </style>

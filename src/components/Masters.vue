@@ -139,6 +139,9 @@ export default {
   .master {
     flex-basis: calc(10% - 0.5rem);
   }
+  .masters-list {
+    max-height: 220px;
+  }
 }
 
 

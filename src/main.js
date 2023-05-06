@@ -11,7 +11,7 @@ app.use(store).use(router);
 
 // Register the service worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register('/service-worker.js');
 }
 
 // Add the beforeinstallprompt event listener
@@ -46,6 +46,8 @@ window.addEventListener('beforeinstallprompt', (event) => {
     });
   });
 });
+
+
 
 
 // Mount the app

@@ -1,30 +1,35 @@
 <template>
   <div class="chatbox">
     <p>Selected Masters: {{ selectedMastersCount }}</p>
-    <div class="messages">
-      <transition name="typing" mode="out-in">
-        <div>
-          <div
-            v-for="(message, index) in messages"
-            :key="index"
-            :class="[message.type === 'user' ? 'user-message' : 'master-message']"
-          > 
-            <img
-              v-if="message.type === 'master'"
-              :src="message.image"
-              :alt="message.author"
-              class="message-avatar"
-            />
-            <img v-else :src="userAvatar" alt="User" class="message-avatar" />
-            <strong
-              >{{ message.type === 'master' ? message.author : 'User'
+    <div class="chatbox-content">
+      <div class="messages">
+        <transition name="typing" mode="out-in">
+          <div>
+            <div
+              v-for="(message, index) in messages"
+              :key="index"
+              :class="[message.type === 'user' ? 'user-message' : 'master-message']"
+            > 
+              <img
+                v-if="message.type === 'master'"
+                :src="message.image"
+                :alt="message.author"
+                class="message-avatar"
+              />
+              <img v-else :src="userAvatar" alt="User" class="message-avatar" />
+              <strong
+                >{{ message.type === 'master' ? message.author : 'User'
 
-              }}:</strong
-            >
-            <pre class="pre-wrap">{{ message.text }}</pre>
+                }}:</strong
+              >
+              <pre class="pre-wrap">{{ message.text }}</pre>
+            </div>
           </div>
-        </div>
-      </transition>
+        </transition>
+      </div>
+      <div class="spinner" v-if="loading">
+        <div class="lds-dual-ring"></div>
+      </div>
     </div>
     <form @submit.prevent="sendMessage">
       <input
@@ -62,6 +67,7 @@ export default {
       messages: [],
       typingMessage: '',
       userAvatar: 'https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g',
+      loading: false,
     };
   },
   methods: {
@@ -79,7 +85,7 @@ export default {
   async getGptResponse(prompt, master) {
   console.log('Getting GPT response for prompt:', prompt);
 
-  const apiKey = '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';
+  const apiKey = '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';
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
   const headers = {
     'Content-Type': 'application/json',
@@ -113,18 +119,16 @@ async sendMessage() {
 
   this.messages.push({ authorImage: userAvatar, text: userMessage, type: 'user' });
   this.inputMessage = '';
+  this.loading = true; // Add this line
 
-  const masterResponses = await Promise.all(
-    this.selectedMasters.map(async (master) => {
-      // Call the ChatGPT API and get response
-      const gptResponse = await this.getGptResponse(userMessage, master);
-      return { author: master.name, image: master.image, text: gptResponse, type: 'master' };
-    })
-  );
-
-  for (const masterResponse of masterResponses) {
+  for (const master of this.selectedMasters) {
+    // Call the ChatGPT API and get response
+    const gptResponse = await this.getGptResponse(userMessage, master);
+    const masterResponse = { author: master.name, image: master.image, text: gptResponse, type: 'master' };
     this.messages.push(masterResponse);
   }
+
+  this.loading = false; // Add this line
 }
 
 
@@ -138,7 +142,8 @@ async sendMessage() {
 
 <style scoped>
 .messages {
-  height: 60vh;
+  font-size: 1.1rem;
+  height: 30vh;
   overflow-y: auto;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -150,7 +155,6 @@ async sendMessage() {
 
 @media (max-width: 768px) {
   .masters-list {
-    max-height: 300px;
     overflow-y: auto;
   }
 }
@@ -208,6 +212,8 @@ input {
 .pre-wrap {
   white-space: pre-wrap;
   word-break: break-word;
+  margin: 10px;
+  margin-top: 0px;
 }
 
 .send-button:hover {
@@ -235,8 +241,8 @@ input {
 
 .master-message,
 .user-message {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .master-message + .user-message {
@@ -281,5 +287,65 @@ input {
   .send-button:hover {
     background-color: #3f9a40;
   }
+  .user-message,  .master-message {
+    display: flex;
+    align-items: flex-start; /* Added to align the text at the top */
+    margin-bottom: 1rem; /* Added to create space between messages */
+  }
+
+  .master-message + .user-message {
+    margin-left: 5px;
+  }
+
+  .master-message {
+    padding-left: 5px; /* Added to create space around the Master's name */
+  }
+
 }
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 1px;
+  border-radius: 50%;
+  border: 3px solid #2196f3;
+  border-color: #2196f3 transparent #2196f3 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.chatbox-content {
+  position: relative;
+  height: 30vh;
+  overflow-y: auto;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+
 </style>

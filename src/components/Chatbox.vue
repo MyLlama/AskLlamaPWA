@@ -83,10 +83,11 @@ export default {
       }
     }, 100); // Adjust the typing speed by changing this value (milliseconds)
   },
+
   async getGptResponse(prompt, master) {
   console.log('Getting GPT response for prompt:', prompt);
 
-  const apiKey = 'sk-4pd8eECvabhGth2KttEsT3BlbkFJHtjF8oolCROJEKWl7doI';
+  const apiKey = process.env.VUE_APP_OPENAI_API_KEY; // Use the environment variable
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
   const headers = {
     'Content-Type': 'application/json',

@@ -9,10 +9,6 @@ const app = createApp(App);
 
 app.use(store).use(router);
 
-// Register the service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}
 
 // Add the beforeinstallprompt event listener
 let deferredPrompt;

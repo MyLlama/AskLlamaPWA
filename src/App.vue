@@ -10,11 +10,10 @@
 </template>
 
 <script>
-import AppHeader from './components/Header.vue';
-import AppFooter from './components/Footer.vue';
-
+import AppHeader from "./components/Header.vue";
+import AppFooter from "./components/Footer.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AppHeader,
     AppFooter,
@@ -23,7 +22,7 @@ export default {
 </script>
 
 <style>
-@import '@/install-button.css';
+@import "@/install-button.css";
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&display=swap");
 #app {
   -webkit-font-smoothing: antialiased;
@@ -49,6 +48,5 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
 }
-@import '@/install-button.css';
+@import "@/install-button.css";
 </style>
-

@@ -8,8 +8,10 @@
             <div
               v-for="(message, index) in messages"
               :key="index"
-              :class="[message.type === 'user' ? 'user-message' : 'master-message']"
-            > 
+              :class="[
+                message.type === 'user' ? 'user-message' : 'master-message',
+              ]"
+            >
               <img
                 v-if="message.type === 'master'"
                 :src="message.image"
@@ -18,8 +20,8 @@
               />
               <img v-else :src="userAvatar" alt="User" class="message-avatar" />
               <strong
-                >{{ message.type === 'master' ? message.author : 'User'
-
+                >{{
+                  message.type === "master" ? message.author : "User"
                 }}:</strong
               >
               <pre class="pre-wrap">{{ message.text }}</pre>
@@ -41,7 +43,11 @@
         ref="questionInput"
         :disabled="!selectedMasters.length || loading"
       />
-      <button class="send-button" @click="askQuestion" :disabled="!selectedMasters.length || loading">
+      <button
+        class="send-button"
+        @click="askQuestion"
+        :disabled="!selectedMasters.length || loading"
+      >
         <i class="fa fa-paper-plane"></i>
       </button>
     </form>
@@ -49,9 +55,9 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-  name: 'AppChatbox',
+  name: "AppChatbox",
   props: {
     selectedMasters: {
       type: Array,
@@ -64,81 +70,94 @@ export default {
   },
   data() {
     return {
-      inputMessage: '',
+      inputMessage: "",
       messages: [],
-      typingMessage: '',
-      userAvatar: 'https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g',
+      typingMessage: "",
+      userAvatar:
+        "https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g",
       loading: false,
     };
   },
   methods: {
     typeMessage(message) {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < message.length) {
-        this.typingMessage += message[index];
-        index++;
-      } else {
-        clearInterval(interval);
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < message.length) {
+          this.typingMessage += message[index];
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100); // Adjust the typing speed by changing this value (milliseconds)
+    },
+
+    async getGptResponse(prompt, master) {
+      console.log("Getting GPT response for prompt:", prompt);
+
+      const apiKey = process.env.VUE_APP_OPENAI_API_KEY; // Use the environment variable
+      const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      };
+
+      const data = {
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: master.prompt },
+          { role: "user", content: `Q: ${prompt}\n` },
+        ],
+      };
+
+      try {
+        console.log("Making API call with data:", data);
+        const response = await axios.post(apiEndpoint, data, { headers });
+        console.log(
+          "GPT response:",
+          response.data.choices[0].message.content.trim()
+        );
+        
+        return response.data.choices[0].message.content.trim();
+      } catch (error) {
+        console.error("Error calling ChatGPT API:", error);
+        return "Sorry, I am unable to provide an answer at the moment.";
       }
-    }, 100); // Adjust the typing speed by changing this value (milliseconds)
-  },
+    },
 
-  async getGptResponse(prompt, master) {
-  console.log('Getting GPT response for prompt:', prompt);
+    async sendMessage() {
+      if (!this.inputMessage || !this.selectedMasters.length) return;
 
-  const apiKey = process.env.VUE_APP_OPENAI_API_KEY; // Use the environment variable
-  const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`,
-  };
+      const userMessage = this.inputMessage;
+      const userAvatar =
+        "https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g";
 
-  const data = {
-    model: 'gpt-3.5-turbo',
-    messages: [
-      { role: 'system', content: master.prompt },
-      { role: 'user', content: `Q: ${prompt}\n` },
-    ],
-  };
+      this.messages.push({
+        authorImage: userAvatar,
+        text: userMessage,
+        type: "user",
+      });
+      this.inputMessage = "";
+      this.loading = true; // Add this line
 
-  try {
-    console.log('Making API call with data:', data);
-    const response = await axios.post(apiEndpoint, data, { headers });
-    console.log('GPT response:', response.data.choices[0].message.content.trim());
-    return response.data.choices[0].message.content.trim();
-  } catch (error) {
-    console.error('Error calling ChatGPT API:', error);
-    return 'Sorry, I am unable to provide an answer at the moment.';
-  }
-},
+      for (const master of this.selectedMasters) {
+        // Call the ChatGPT API and get response
+        const gptResponse = await this.getGptResponse(userMessage, master);
+        const masterResponse = {
+          author: master.name,
+          image: master.image,
+          text: gptResponse,
+          type: "master",
+        };
+        this.messages.push(masterResponse);
+      }
 
-async sendMessage() {
-  if (!this.inputMessage || !this.selectedMasters.length) return;
-
-  const userMessage = this.inputMessage;
-  const userAvatar = "https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g";
-
-  this.messages.push({ authorImage: userAvatar, text: userMessage, type: 'user' });
-  this.inputMessage = '';
-  this.loading = true; // Add this line
-
-  for (const master of this.selectedMasters) {
-    // Call the ChatGPT API and get response
-    const gptResponse = await this.getGptResponse(userMessage, master);
-    const masterResponse = { author: master.name, image: master.image, text: gptResponse, type: 'master' };
-    this.messages.push(masterResponse);
-  }
-
-  this.loading = false; // Add this line
-}
-
-
+      this.loading = false; // Add this line
+    },
   },
   mounted() {
-  // Focus the input when the component is mounted
-  this.$refs.questionInput.focus();
-},
+    // Focus the input when the component is mounted
+    this.$refs.questionInput.focus();
+  },
 };
 </script>
 
@@ -289,7 +308,8 @@ input {
   .send-button:hover {
     background-color: #3f9a40;
   }
-  .user-message,  .master-message {
+  .user-message,
+  .master-message {
     display: flex;
     align-items: flex-start; /* Added to align the text at the top */
     margin-bottom: 1rem; /* Added to create space between messages */
@@ -302,7 +322,6 @@ input {
   .master-message {
     padding-left: 5px; /* Added to create space around the Master's name */
   }
-
 }
 .spinner {
   display: flex;
@@ -348,6 +367,4 @@ input {
   transform: translate(-50%, -50%);
   z-index: 10;
 }
-
-
 </style>

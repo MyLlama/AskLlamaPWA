@@ -14,8 +14,8 @@ app.use(store).use(router);
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (event) => {
   // Prevent the default banner prompt
-  event.preventDefault();
-
+  // event.preventDefault();
+  
   // Stash the event so it can be triggered later.
   deferredPrompt = event;
 

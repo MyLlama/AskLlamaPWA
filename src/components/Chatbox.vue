@@ -1,6 +1,6 @@
 <template>
   <div class="chatbox">
-    <p>Selected Masters: {{ selectedMastersCount }}</p>
+    <p class="selected-masters">Selected Masters: {{ selectedMastersCount }}</p>
     <div class="chatbox-content">
       <div class="messages">
         <transition name="typing" mode="out-in">
@@ -39,7 +39,7 @@
         class="question-input"
         v-model="inputMessage"
         @keyup.enter="sendMessage"
-        placeholder="Ask a question..."
+        placeholder="How do I find peace in the middle of chaos?"
         ref="questionInput"
         :disabled="!selectedMasters.length || loading"
       />
@@ -67,7 +67,11 @@ export default {
       type: Number,
       required: true,
     },
+    isActive: {
+      type: Boolean
+    }
   },
+  
   data() {
     return {
       inputMessage: "",
@@ -79,6 +83,9 @@ export default {
     };
   },
   methods: {
+    handleClick() {
+      this.active = !this.active;
+    },
     typeMessage(message) {
       let index = 0;
       const interval = setInterval(() => {
@@ -94,7 +101,7 @@ export default {
     async getGptResponse(prompt, master) {
       console.log("Getting GPT response for prompt:", prompt);
 
-      const apiKey = process.env.VUE_APP_OPENAI_API_KEY; // Use the environment variable
+      const apiKey = "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"; // Use the environment variable
       const apiEndpoint = "https://api.openai.com/v1/chat/completions";
       const headers = {
         "Content-Type": "application/json",
@@ -176,8 +183,11 @@ export default {
 
 @media (max-width: 768px) {
   .masters-list {
+    /* display: none; */
     overflow-y: auto;
   }
+
+ 
 }
 .author-image {
   width: 30px;
@@ -368,3 +378,6 @@ input {
   z-index: 10;
 }
 </style>
+
+
+#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

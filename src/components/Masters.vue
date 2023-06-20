@@ -1,6 +1,20 @@
 <template>
-  <div class="masters">
-    <h2>Select a Master to chat with</h2>
+  <div class="masters" :style="{
+        
+        // color: active ? 'black' : 'white',
+      }">
+      <!-- <div class="carousel">
+    <div class="inner">
+      <div class="card" v-for="card in cards" :key="card">
+        {{ card }}
+      </div>
+    </div>
+  </div>
+  <button>prev</button>
+  <button @click="next">next</button> -->
+    <h2>Select the Masters you want to talk to</h2>
+    
+    <transition name="fade" mode="out-in">
     <div class="masters-list">
       <div
         v-for="(master, index) in masters"
@@ -13,11 +27,15 @@
         <p>{{ master.name }}</p>
       </div>
     </div>
+  </transition>
   </div>
 </template>
 
 <script>
 import Swal from "sweetalert2";
+
+
+
 export default {
   name: "AppMasters",
   props: {
@@ -25,9 +43,16 @@ export default {
       type: Array,
       default: () => [],
     },
+    isActive: {
+      type: Boolean
+    }
   },
   data() {
+    
     return {
+      cards: [1, 2, 3, 4, 5, 6, 7, 8],
+      innerStyles: {},
+      step: '',
       selectedMastersCount: 0,
       masters: [
         {
@@ -169,6 +194,21 @@ export default {
     };
   },
   methods: {
+    // setStep () {
+    //   const innerWidth = this.$refs.inner.scrollHeight // ❶
+    //   const totalCards = this.cards.length
+    //   this.step = `${innerWidth / totalCards}px` // ❷
+    // },
+
+    // next () {
+    //   this.moveLeft() // ❸
+    // },
+
+    // moveLeft () {
+    //   this.innerStyles = {
+    //     transform: `translateX(-${this.step})`
+    //   }
+    // },
     toggleMaster(master) {
       // Check if the master is already selected
       if (master.selected) {
@@ -255,10 +295,46 @@ export default {
 
 @media (max-width: 768px) {
   .master {
+    /* display: none; */
     flex-basis: calc(10% - 0.5rem);
   }
   .masters-list {
     max-height: 220px;
+    /* display: none; */
   }
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.carousel {
+  width: 170px; /* ❶ */
+  overflow: hidden; /* ❷ */
+}
+
+.inner {
+  white-space: nowrap; /* ❸ */
+  transition: transform 0.2s; /* ❹ */
+
+}
+
+.card {
+  width: 40px;
+  margin-right: 10px;
+  display: inline-flex;
+
+  /* optional */
+  height: 40px;
+  background-color: #39b1bd;
+  color: white;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>

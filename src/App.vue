@@ -2,9 +2,11 @@
   <div id="app">
     <div class="container">
       <app-header></app-header>
+      <!-- <Carousel/> -->
       <router-view></router-view>
       <app-footer></app-footer>
-      <button id="install-button">Install</button>
+      <!-- <llama-car></llama-car> -->
+     
     </div>
   </div>
 </template>
@@ -12,11 +14,16 @@
 <script>
 import AppHeader from "./components/Header.vue";
 import AppFooter from "./components/Footer.vue";
+// import Carousel from './components/Carousel.vue'
+
+// import LlamaCar from "./components/Carousel.vue"
+
 export default {
   name: "App",
   components: {
     AppHeader,
     AppFooter,
+    // Carousel
   },
 };
 </script>

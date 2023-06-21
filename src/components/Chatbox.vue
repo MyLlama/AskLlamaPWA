@@ -1,6 +1,10 @@
 <template>
   <div class="chatbox">
-    <p>Selected Masters: {{ selectedMastersCount }}</p>
+    <div class="selected-masters">
+        <div v-for="(master, index) in selectedMasters" :key="index" class="selected-master">
+            <img :src="master.image" :alt="master.name" />
+        </div>
+    </div>
     <div class="chatbox-content">
       <div class="messages">
         <transition name="typing" mode="out-in">
@@ -366,5 +370,20 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
+}
+.selected-masters {
+    display: flex;
+    gap: 10px;
+}
+
+.selected-master img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.selected-master p {
+    text-align: center;
 }
 </style>

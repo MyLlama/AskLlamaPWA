@@ -1,16 +1,18 @@
 <template>
   <div class="masters">
     <h2>Select a Master to chat with</h2>
-    <div class="masters-list">
-      <div
-        v-for="(master, index) in masters"
-        :key="index"
-        :class="[master.selected ? 'selected' : '']"
-        class="master"
-        @click="toggleMaster(master)"
-      >
-        <img :src="master.image" :alt="master.name" />
-        <p>{{ master.name }}</p>
+    <div class="masters-container">
+      <div class="masters-list">
+        <div
+          v-for="(master, index) in masters"
+          :key="index"
+          :class="[master.selected ? 'selected' : '']"
+          class="master"
+          @click="toggleMaster(master)"
+        >
+          <img :src="master.image" :alt="master.name" />
+          <p>{{ master.name }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -209,27 +211,51 @@ export default {
   margin-bottom: 1rem;
 }
 
+.masters-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.masters-container:before, .masters-container:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 1rem;
+  height: 100%;
+  z-index: 1;
+}
+
+.masters-container:before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, transparent 100%);
+}
+
+.masters-container:after {
+  right: 0;
+  background: linear-gradient(-90deg, #fff 0%, transparent 100%);
+}
+
 .masters-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 0.5rem;
-  margin: 0 auto;
-  overflow: scroll;
-  background: antiquewhite;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 1rem 0;
 }
 
 .master {
-  position: relative;
-  flex-basis: calc(10% - 0.5rem);
-  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .master img {
   border-radius: 50%;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   cursor: pointer;
 }
@@ -254,11 +280,10 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .master {
-    flex-basis: calc(10% - 0.5rem);
-  }
-  .masters-list {
-    max-height: 220px;
+  .master img {
+    width: 80px;
+    height: 80px;
   }
 }
+
 </style>

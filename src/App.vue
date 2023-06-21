@@ -23,7 +23,6 @@ export default {
 
 <style>
 @import "@/install-button.css";
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&display=swap");
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,10 +35,6 @@ export default {
   background-color: #f5f5f5;
 }
 
-html,
-body {
-  font-family: "Baloo Bhai 2", cursive;
-}
 
 .container {
   width: 100%;

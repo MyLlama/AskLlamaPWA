@@ -1,11 +1,13 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <img
+      <a href="https://www.myllama.co/">
+        <img
         class="header-logo"
         src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png"
         alt="Ask Llama"
       />
+      </a>
       <div class="header-text">
         <h1>Ask Llama</h1>
         <h2>Modern Problems. Timeless Answers</h2>
@@ -83,6 +85,7 @@ export default {
   background-color: #f79311;
   color: white;
   padding: 1rem;
+  height: 10vh;
 }
 
 .header-container {
@@ -122,9 +125,6 @@ h2 {
 @media (max-width: 768px) {
   .header-logo {
     width: 40px!important;
-  }
-  .masters-list {
-    max-height: 110px!important;
   }
   .header-container {
     justify-content: left;

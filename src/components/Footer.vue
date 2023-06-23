@@ -5,7 +5,7 @@
         <strong>Powered by Llama</strong>
       </div>
       <div class="website">
-        Visit our website: <a href="https://www.myllama.co">www.myllama.co</a>
+        <a href="https://www.myllama.co">www.myllama.co</a>
       </div>
 
       <div class="legal">
@@ -81,12 +81,18 @@ export default {
   text-align: center;
   margin-top: 25px;
   font-size: 0.9rem;
+  height: 10vh;
+}
+
+.website {
+  text-decoration: underline;
 }
 
 .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
 .logo {
@@ -104,9 +110,6 @@ a {
   text-decoration: none;
 }
 
-.legal {
-  margin: 20px 0;
-}
 a:hover {
   text-decoration: underline;
 }

@@ -1,19 +1,20 @@
 <template>
   <div>
-    <div v-if="showMasters">
-      <Masters @update:modelValue="selectMaster" />
+    <Masters @update:modelValue="selectMaster" />
+    <Chatbox :selectedMasters="selectedMasters" :selectedMastersCount="selectedMasters.length" />
+
+    <!-- <div v-if="showMasters">
       <div class="swap-section" @click="swapVisibility">
         <i class="fa" :class="[showMasters ? 'fa-chevron-down' : 'fa-chevron-up']"></i>
         <span>Start Chatting</span>
       </div>
     </div>
     <div v-else>
-      <Chatbox :selectedMasters="selectedMasters" :selectedMastersCount="selectedMasters.length" />
       <div class="swap-section" @click="swapVisibility">
         <i class="fa" :class="[showMasters ? 'fa-chevron-down' : 'fa-chevron-up']"></i>
         <span>Select Master</span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

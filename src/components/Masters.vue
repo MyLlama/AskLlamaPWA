@@ -208,7 +208,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 70vh;
+  height: 25vh;
 }
 
 .masters h2 {

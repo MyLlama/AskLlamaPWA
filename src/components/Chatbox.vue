@@ -1,13 +1,13 @@
 <template>
   <div class="chatbox">
-    <div class="selected-masters">
+    <!-- <div class="selected-masters">
       <p>Selected Masters</p>
         <div v-for="(master, index) in selectedMasters" :key="index" class="selected-master">
             <img :src="master.image" :alt="master.name" />
         </div>
-    </div>
+    </div> -->
     <div class="chatbox-content">
-      <div class="messages">
+      <div class="messages" ref="messages">
         <transition name="typing" mode="out-in">
           <div>
             <div
@@ -24,11 +24,6 @@
                 class="message-avatar"
               />
               <img v-else :src="userAvatar" alt="User" class="message-avatar" />
-              <strong
-                >{{
-                  message.type === "master" ? message.author : "User"
-                }}:</strong
-              >
               <pre class="pre-wrap">{{ message.text }}</pre>
             </div>
           </div>
@@ -129,6 +124,13 @@ export default {
       }
     },
 
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const container = this.$refs.messages;
+        container.scrollTop = container.scrollHeight;
+      });
+    },
+
     async sendMessage() {
       if (!this.inputMessage || !this.selectedMasters.length) return;
 
@@ -159,6 +161,11 @@ export default {
       this.loading = false; // Add this line
     },
   },
+  watch: {
+    messages() {
+      this.scrollToBottom();
+    },
+  },
   mounted() {
     // Focus the input when the component is mounted
     this.$refs.questionInput.focus();
@@ -169,7 +176,7 @@ export default {
 <style scoped>
 .messages {
   font-size: 1.1rem;
-  height: 100%;
+  height: 90%;
   overflow-y: auto;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -286,9 +293,6 @@ input {
 }
 
 @media (max-width: 767px) {
-  .messages {
-    height: 300px;
-  }
 
   .author-image {
     width: 20px;
@@ -303,8 +307,8 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 45vh;
     overflow: auto; /* Add this line to enable vertical scrolling */
-    min-height: 70vh;
   }
 
   .send-button {
@@ -362,8 +366,9 @@ input {
 }
 .chatbox-content {
   position: relative;
-  height: 60vh!important;
   overflow-y: auto;
+  height: 40vh;
+  margin-bottom: 5px;
 }
 
 .spinner {

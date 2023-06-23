@@ -33,13 +33,13 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
-  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 
 .container {
   width: 100%;
-  height: 100%;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;

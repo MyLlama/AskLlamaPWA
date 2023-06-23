@@ -1,6 +1,6 @@
 <template>
   <div class="masters">
-    <h2>Select the Masters you want to talk to</h2>
+    <h4>Select the Masters you want to talk to</h4>
     <div class="masters-container">
       <div class="masters-list">
         <div
@@ -282,8 +282,12 @@ export default {
 }
 
 .master img {
-  border: 1px solid rgba(235, 199, 157);
-  box-shadow: 2px 2px 1px 2px rgba(235, 199, 157);
+  border: 1px solid rgba(185, 175, 165);
+  box-shadow: 2px 2px 1px 2px rgba(185, 175, 165);
+}
+
+h4 {
+  margin: 10px!important;
 }
 
 .master.selected img {

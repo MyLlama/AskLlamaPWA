@@ -182,7 +182,7 @@ export default {
 .messages {
   font-size: 1.1rem;
   height: 90%;
-  overflow-y: auto;
+  overflow-y: hidden;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   padding: 1rem;
@@ -313,7 +313,6 @@ input {
     flex-direction: column;
     justify-content: space-between;
     height: 45vh;
-    overflow: auto; /* Add this line to enable vertical scrolling */
   }
 
   .send-button {
@@ -371,7 +370,7 @@ input {
 }
 .chatbox-content {
   position: relative;
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 40vh;
   margin-bottom: 5px;
 }

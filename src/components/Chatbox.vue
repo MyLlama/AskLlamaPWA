@@ -182,7 +182,7 @@ export default {
 .messages {
   font-size: 1.1rem;
   height: 90%;
-  overflow-y: hidden;
+  overflow-y: auto;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   padding: 1rem;

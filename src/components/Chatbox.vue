@@ -7,7 +7,7 @@
         </div>
     </div> -->
     <div class="chatbox-content">
-      <div class="messages" ref="messages">
+      <div class="messages" ref="messagesContainer">
         <transition name="typing" mode="out-in">
           <div>
             <div
@@ -121,12 +121,17 @@ export default {
       } catch (error) {
         console.error("Error calling ChatGPT API:", error);
         return "Sorry, I am unable to provide an answer at the moment.";
+      } finally {
+        const container = this.$refs.messagesContainer;
+        container.scrollTop = container.scrollHeight;
+        var objDiv = document.getElementsByClassName("messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
       }
     },
 
     scrollToBottom() {
       this.$nextTick(() => {
-        const container = this.$refs.messages;
+        const container = this.$refs.messagesContainer;
         container.scrollTop = container.scrollHeight;
       });
     },

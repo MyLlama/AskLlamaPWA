@@ -53,6 +53,6 @@ export default {
   margin-down: 10px;
 }
 .swap-section span {
-  margin-up: 5px;
+  margin-up: 5px; 
 }
 </style>

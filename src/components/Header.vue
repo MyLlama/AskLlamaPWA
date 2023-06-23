@@ -8,7 +8,7 @@
       />
       <div class="header-text">
         <h1>Ask Llama</h1>
-        <h2>Timeless Answers for Modern Problems</h2>
+        <h2>Modern Problems. Timeless Answers</h2>
       </div>
       <button
         v-if="showInstallButton"

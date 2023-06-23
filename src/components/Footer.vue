@@ -4,20 +4,14 @@
       <div class="logo">
         <strong>Powered by Llama</strong>
       </div>
-      <!-- <div class="disclaimer">
-        <p>
-          This is a research project, might give incorrect and irrelevant
-          answers sometimes.
-        </p>
-      </div> -->
+      <div class="website">
+        Visit our website: <a href="https://www.myllama.co">www.myllama.co</a>
+      </div>
+
       <div class="legal">
-        <button
-          type="button"
-          class="btn-modal disclaimer"
-          @click="showDisclaimer"
-        >
+        <a href="#" class="link-text disclaimer" @click.prevent="showDisclaimer">
           Disclaimer
-        </button>
+        </a>
         <the-disclaimer v-show="isDisclaimerVisible" @close="closeDisclaimer">
           <template v-slot:header>
             <h2>Disclaimer</h2>
@@ -30,13 +24,9 @@
           </template>
         </the-disclaimer>
 
-        <button
-          type="button"
-          class="btn-modal privacy-policy"
-          @click="showPrivacyPolicy"
-        >
+        <a href="#" class="link-text privacy-policy" @click.prevent="showPrivacyPolicy">
           Privacy Policy
-        </button>
+        </a>
         <the-disclaimer
           v-show="isPrivacyPolicyVisible"
           @close="closePrivacyPolicy"
@@ -49,9 +39,7 @@
           </template>
         </the-disclaimer>
       </div>
-      <div class="website">
-        Visit our website: <a href="https://www.myllama.co">www.myllama.co</a>
-      </div>
+      
     </div>
   </footer>
 </template>
@@ -65,7 +53,7 @@ export default {
   },
   data() {
     return {
-      isDisclaimerVisible: false,
+      isDisclaimerVisible: true,
       isPrivacyPolicyVisible: false,
     };
   },
@@ -88,8 +76,8 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: #f79311; /* Updated background color from #f3c460 to #f79311 */
-  color: #ffffff; /* Updated text color */
+  background-color: #f79311;
+  color: #ffffff;
   text-align: center;
   margin-top: 25px;
   font-size: 0.9rem;
@@ -105,30 +93,15 @@ export default {
   font-size: 1.2rem;
 }
 
-a {
-  color: #ffffff; /* Updated link color */
-  text-decoration: none;
-}
-
-.btn-modal {
-  background: antiquewhite;
-  border: 3px solid white;
-  border-radius: 21px;
-  color: #666666;
+.link-text {
+  color: #ffffff;
   cursor: pointer;
-  float: left;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-
-  /* text-transform: uppercase; */
-}
-.disclaimer {
-  margin-right: 20px;
+  margin: 0 10px;
 }
 
-.privacy-policy {
-  margin-left: 20px;
+a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .legal {
@@ -138,8 +111,4 @@ a:hover {
   text-decoration: underline;
 }
 
-.btn-modal:hover {
-  border-radius: 25px;
-  letter-spacing: 2px;
-}
 </style>

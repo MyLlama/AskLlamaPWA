@@ -1,6 +1,7 @@
 <template>
   <div class="chatbox">
     <div class="selected-masters">
+      <p>Selected Masters</p>
         <div v-for="(master, index) in selectedMasters" :key="index" class="selected-master">
             <img :src="master.image" :alt="master.name" />
         </div>
@@ -168,7 +169,7 @@ export default {
 <style scoped>
 .messages {
   font-size: 1.1rem;
-  height: 30vh;
+  height: 100%;
   overflow-y: auto;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -303,6 +304,7 @@ input {
     flex-direction: column;
     justify-content: space-between;
     overflow: auto; /* Add this line to enable vertical scrolling */
+    min-height: 70vh;
   }
 
   .send-button {
@@ -360,7 +362,7 @@ input {
 }
 .chatbox-content {
   position: relative;
-  height: 30vh;
+  height: 60vh!important;
   overflow-y: auto;
 }
 
@@ -372,8 +374,9 @@ input {
   z-index: 10;
 }
 .selected-masters {
-    display: flex;
-    gap: 10px;
+  display: inline-flex;
+  gap: 10px;
+  padding: 10px;
 }
 
 .selected-master img {

@@ -1,6 +1,6 @@
 <template>
   <div class="masters">
-    <h2>Select a Master to chat with</h2>
+    <h2>Select the Masters you want to talk to</h2>
     <div class="masters-container">
       <div class="masters-list">
         <div
@@ -205,6 +205,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: 70vh;
 }
 
 .masters h2 {

@@ -10,13 +10,16 @@
           class="master"
           @click="toggleMaster(master)"
         >
-          <img :src="master.image" :alt="master.name" />
-          <p>{{ master.name }}</p>
+          <div :title="master.name">
+            <img :src="master.image" :alt="master.name" />
+            <p :class="{ 'ellipsis': master.name.length > 8 }">{{ master.name }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import Swal from "sweetalert2";
@@ -231,7 +234,14 @@ export default {
 
 .masters-container:before {
   left: 0;
-  background: linear-gradient(90deg, #fff 0%, transparent 100%);
+  background: linear-gradient(90deg, rgb(123, 121, 121) 0%, transparent 100%);
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px; /* Adjust this to the size of your master images */
 }
 
 .masters-container:after {
@@ -251,12 +261,13 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  min-width: 100px;
 }
 
 .master img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   cursor: pointer;
 }
@@ -271,8 +282,8 @@ export default {
 }
 
 .master img {
-  border: 1px solid rgba(0, 0, 0, 0);
-  box-shadow: 2px 2px 1px 2px rgba(0, 0, 0, 0);
+  border: 1px solid rgba(235, 199, 157);
+  box-shadow: 2px 2px 1px 2px rgba(235, 199, 157);
 }
 
 .master.selected img {
@@ -282,8 +293,8 @@ export default {
 
 @media (max-width: 768px) {
   .master img {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
   }
 }
 

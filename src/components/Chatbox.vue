@@ -78,6 +78,7 @@ export default {
       typingMessage: "",
       userAvatar: user,
       loading: false,
+      conversationHistory: [], 
     };
   },
   methods: {
@@ -106,6 +107,7 @@ export default {
       const data = {
         model: "gpt-3.5-turbo",
         messages: [
+        ...this.conversationHistory,  // Include the existing conversation history
           { role: "system", content: master.prompt },
           { role: "user", content: `Q: ${prompt}\n` },
         ],
@@ -119,6 +121,12 @@ export default {
           response.data.choices[0].message.content.trim()
         );
 
+        // Save the assistant's response to the conversation history
+        this.conversationHistory.push({
+          role: "assistant",
+          content: response.data.choices[0].message.content.trim(),
+        });
+        
         return response.data.choices[0].message.content.trim();
       } catch (error) {
         console.error("Error calling ChatGPT API:", error);
@@ -151,7 +159,13 @@ export default {
         type: "user",
       });
       this.inputMessage = "";
-      this.loading = true; // Add this line
+      this.loading = true;
+
+      // Save the user's message to the conversation history
+      this.conversationHistory.push({
+        role: "user",
+        content: `Q: ${userMessage}\n`,
+      });
 
       for (const master of this.selectedMasters) {
         // Call the ChatGPT API and get response

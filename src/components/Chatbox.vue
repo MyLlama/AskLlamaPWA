@@ -76,6 +76,7 @@ export default {
       userAvatar:
         "https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g",
       loading: false,
+      conversationHistory: [], 
     };
   },
   methods: {
@@ -105,6 +106,7 @@ export default {
         model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: master.prompt },
+          ...this.conversationHistory,  // Include the existing conversation history
           { role: "user", content: `Q: ${prompt}\n` },
         ],
       };
@@ -116,6 +118,12 @@ export default {
           "GPT response:",
           response.data.choices[0].message.content.trim()
         );
+
+        // Save the assistant's response to the conversation history
+        this.conversationHistory.push({
+          role: "assistant",
+          content: response.data.choices[0].message.content.trim(),
+        });
         
         return response.data.choices[0].message.content.trim();
       } catch (error) {
@@ -149,7 +157,13 @@ export default {
         type: "user",
       });
       this.inputMessage = "";
-      this.loading = true; // Add this line
+      this.loading = true;
+
+      // Save the user's message to the conversation history
+      this.conversationHistory.push({
+        role: "user",
+        content: `Q: ${userMessage}\n`,
+      });
 
       for (const master of this.selectedMasters) {
         // Call the ChatGPT API and get response

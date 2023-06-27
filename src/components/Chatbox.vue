@@ -105,8 +105,8 @@ export default {
       const data = {
         model: "gpt-3.5-turbo",
         messages: [
+        ...this.conversationHistory,  // Include the existing conversation history
           { role: "system", content: master.prompt },
-          ...this.conversationHistory,  // Include the existing conversation history
           { role: "user", content: `Q: ${prompt}\n` },
         ],
       };

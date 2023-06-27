@@ -320,6 +320,10 @@ input {
   transform: translateY(10px);
 }
 
+pre {
+  font-family: serif;
+}
+
 @media (max-width: 767px) {
   .author-image {
     width: 20px;

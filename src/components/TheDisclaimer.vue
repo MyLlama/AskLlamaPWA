@@ -87,6 +87,8 @@
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
+  width: 110px;
+  margin: auto;
 }
 
 .btn-yellow:hover {

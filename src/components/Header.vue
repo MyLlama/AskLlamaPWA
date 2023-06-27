@@ -1,12 +1,13 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <a href="https://www.myllama.co/">
+      <a href="https://www.myllama.co/" 
+      >
         <img
-        class="header-logo"
-        src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png"
-        alt="Ask Llama"
-      />
+          class="header-logo"
+          src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png"
+          alt="Ask Llama"
+        />
       </a>
       <div class="header-text">
         <h1>Ask Llama</h1>
@@ -20,14 +21,13 @@
       >
         Install
       </button>
-
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader',
+  name: "AppHeader",
   data() {
     return {
       deferredPrompt: null,
@@ -35,10 +35,17 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+    window.addEventListener(
+      "beforeinstallprompt",
+      this.handleBeforeInstallPrompt
+    );
   },
-  beforeUnmount() { // Update this line
-    window.removeEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+  beforeUnmount() {
+    // Update this line
+    window.removeEventListener(
+      "beforeinstallprompt",
+      this.handleBeforeInstallPrompt
+    );
   },
   methods: {
     handleBeforeInstallPrompt(event) {
@@ -50,10 +57,10 @@ export default {
       if (this.deferredPrompt) {
         this.deferredPrompt.prompt();
         const choiceResult = await this.deferredPrompt.userChoice;
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
         } else {
-          console.log('User dismissed the install prompt');
+          console.log("User dismissed the install prompt");
         }
         this.deferredPrompt = null;
         this.showInstallButton = false;
@@ -61,7 +68,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped>
@@ -124,7 +130,7 @@ h2 {
 
 @media (max-width: 768px) {
   .header-logo {
-    width: 40px!important;
+    width: 40px !important;
   }
   .header-container {
     justify-content: left;

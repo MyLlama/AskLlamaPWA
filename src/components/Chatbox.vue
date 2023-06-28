@@ -34,6 +34,9 @@
       </div>
     </div>
     <form @submit.prevent="sendMessage">
+      <div v-if="!selectedMasters.length" class="error-message">
+        Please select at least one master to enable chat.
+      </div>
       <input
         type="text"
         class="question-input"
@@ -218,6 +221,7 @@ export default {
   text-align: left;
   word-wrap: break-word;
   white-space: pre-wrap;
+  background: blanchedalmond;
 }
 
 @media (max-width: 768px) {
@@ -271,6 +275,16 @@ input {
   border-radius: 12px;
   padding: 8px 16px;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-bottom: 0.5em;
+  position: absolute;
+  bottom: 25vh;
+  left: 2vh;
+}
+
 
 .message {
   margin-bottom: 1rem;

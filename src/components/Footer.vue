@@ -21,29 +21,29 @@
             <h2>Disclaimer</h2>
           </template>
           <template #body>
-            <ul>
+            <ul class="custom-bullet">
               <li>
                 AskLlama is an artificial intelligence program that doesn’t take
-                itself too seriously. Hope you don't too🙂🙃
+                itself too seriously. Hope you don't too 🙂🙃
               </li>
               <br />
               <li>
                 As much as we love our AskLlama characters, they are not the
                 originals but only representations. Don't worry though, they
                 still have all the personality and charm of the original
-                Masters😎
+                Masters 😎
               </li>
               <br />
               <li>
                 AskLlama responses are for informational purposes only and
                 should not be treated as sage advice. So, if you're looking to
                 quit your job and become a llama herder because of something we
-                said,maybe double check with an actual professional first.
+                said, maybe double check with an actual professional first.
               </li>
               <br />
               <li>
                 AskLlama may occasionally provide inaccurate information or use
-                humour(our best quality obviously) that may not be everyone’s
+                humour (our best quality obviously) that may not be everyone’s
                 cup of tea.
               </li>
               <br />
@@ -54,7 +54,6 @@
             </ul>
           </template>
         </the-disclaimer>
-
         <a
           href="#"
           class="link-text privacy-policy"
@@ -258,4 +257,14 @@ ul {
   margin: auto;
   width: 90%;
 }
+
+ul.custom-bullet {
+    list-style-type: none; /* Remove the default bullet point */
+  }
+
+  ul.custom-bullet li::before {
+    content: "✔ "; /* Add tick mark before each list item */
+    color: green; /* Change color of tick mark */
+    font-weight: bold; /* Make the tick mark bold */
+  }
 </style>

@@ -51,6 +51,9 @@
         <i class="fa fa-paper-plane"></i>
       </button>
     </form>
+    <div v-show="messages.length > 0" class="clear-chat-button">
+      <button @click="clearChat">Clear Chat</button>
+    </div>
   </div>
 </template>
 
@@ -80,6 +83,10 @@ export default {
     };
   },
   methods: {
+    clearChat() {
+      this.messages = [];
+      this.conversationHistory = [];
+    },
     typeMessage(message) {
       let index = 0;
       const interval = setInterval(() => {
@@ -194,7 +201,6 @@ export default {
 
 <style scoped>
 .messages {
-  font-size: 1.1rem;
   height: 90%;
   overflow-y: auto;
   margin-bottom: 1rem;
@@ -297,7 +303,7 @@ input {
   margin-bottom: 20px;
 }
 
-.master-message + .user-message {
+.master-message, .user-message {
   margin-left: 5px;
 }
 .typing-enter-active,
@@ -343,7 +349,7 @@ input {
     margin-bottom: 1rem; /* Added to create space between messages */
   }
 
-  .master-message + .user-message {
+  .master-message, .user-message {
     margin-left: 5px;
   }
 
@@ -412,4 +418,26 @@ input {
 .selected-master p {
     text-align: center;
 }
+
+.clear-chat-button {
+    position: absolute;
+    right: 15px;
+    top: 40vh;
+    z-index: 10;
+  }
+
+  .clear-chat-button button {
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #f79311;
+  }
+
+  .clear-chat-button button:hover {
+    background-color: #d32f2f;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  }
 </style>

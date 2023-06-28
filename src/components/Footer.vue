@@ -5,11 +5,15 @@
         <strong>Powered by Llama</strong>
       </div>
       <div class="website">
-        <a href="https://www.myllama.co">www.myllama.co</a>
+        <a target="_blank" href="https://www.myllama.co">www.myllama.co</a>
       </div>
 
       <div class="legal">
-        <a href="#" class="link-text disclaimer" @click.prevent="showDisclaimer">
+        <a
+          href="#"
+          class="link-text disclaimer"
+          @click.prevent="showDisclaimer"
+        >
           Disclaimer
         </a>
         <the-disclaimer v-show="isDisclaimerVisible" @close="closeDisclaimer">
@@ -17,14 +21,45 @@
             <h2>Disclaimer</h2>
           </template>
           <template #body>
-            <p>
-              This is a research project, might give incorrect and irrelevant
-              answers sometimes.
-            </p>
+            <ul>
+              <li>
+                AskLlama is an artificial intelligence program that doesn’t take
+                itself too seriously. Hope you don't too🙂🙃
+              </li>
+              <br />
+              <li>
+                As much as we love our AskLlama characters, they are not the
+                originals but only representations. Don't worry though, they
+                still have all the personality and charm of the original
+                Masters😎
+              </li>
+              <br />
+              <li>
+                AskLlama responses are for informational purposes only and
+                should not be treated as sage advice. So, if you're looking to
+                quit your job and become a llama herder because of something we
+                said,maybe double check with an actual professional first.
+              </li>
+              <br />
+              <li>
+                AskLlama may occasionally provide inaccurate information or use
+                humour(our best quality obviously) that may not be everyone’s
+                cup of tea.
+              </li>
+              <br />
+              <p>
+                Ask away, but don't sue us if it gets sassy! We're just a bunch
+                of llamas trying to make your day a little brighter!
+              </p>
+            </ul>
           </template>
         </the-disclaimer>
 
-        <a href="#" class="link-text privacy-policy" @click.prevent="showPrivacyPolicy">
+        <a
+          href="#"
+          class="link-text privacy-policy"
+          @click.prevent="showPrivacyPolicy"
+        >
           Privacy Policy
         </a>
         <the-disclaimer
@@ -35,62 +70,109 @@
             <h2>Privacy Policy</h2>
           </template>
           <template #body>
-            <p>
-Privacy Policy
-At myllama, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Llama and how we use it.
-If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
-This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in myllama. This policy is not applicable to any information collected offline or via channels other than this website.
-Consent
-By using our website, you hereby consent to our Privacy Policy and agree to its terms.
-Information we collect
-The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.
-If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
-When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.
-How we use your information
-We use the information we collect in various ways, including to:
-Provide, operate, and maintain our website
-Improve, personalize, and expand our website
-Understand and analyze how you use our website
-Develop new products, services, features, and functionality
-Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes
-Send you emails
-Find and prevent fraud
-Log Files
-Myllama follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and are a part of hosting services’ analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users’ movement on the website, and gathering demographic information.
-Cookies and Web Beacons
-Like any other website, myllama uses ‘cookies’. These cookies are used to store information including visitors’ preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users’ experience by customizing our web page content based on visitors’ browser type and/or other information.
-For more general information on cookies, please read the Cookies article on Generate Privacy Policy website.
-Advertising Partners Privacy Policies
-You may consult this list to find the Privacy Policy for each of the advertising partners of myllama.
-Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on myllama, which are sent directly to users’ browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.
-Note that myllama has no access to or control over these cookies that are used by third-party advertisers.
-Third Party Privacy Policies
-MyLlama’s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt out of certain options.
-You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers’ respective websites.
-CCPA Privacy Rights (Do Not Sell My Personal Information)
-Under the CCPA, among other rights, California consumers have the right to:
-Request that a business that collects a consumer’s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.
-Request that a business deletes any personal data about the consumer that a business has collected.
-Request that a business that sells a consumer’s personal data, not sell the consumer’s personal data.
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
-GDPR Data Protection Rights
-We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:
-The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.
-The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.
-The right to erasure – You have the right to request that we erase your personal data, under certain conditions.
-The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.
-The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.
-The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
-Children’s Information
-Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
-Myllama does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+            <p class="privacy-policy-content">
+              At MyLlama, we value the privacy of our visitors. This Privacy
+              Policy explains the types of information we collect and how we use
+              it. If you have any additional questions or need more information,
+              please don't hesitate to contact us. This Privacy Policy applies
+              only to our online activities and is valid for visitors to our
+              website with respect to the information they share and/or collect
+              on MyLlama. It does not apply to any offline information or
+              information collected through other channels. By using our
+              website, you consent to our Privacy Policy and agree to its terms.
+              <br />
+              <br />
 
+              <span>Information We Collect:</span> When you use our website, you
+              may be asked to provide certain personal information. The reasons
+              for collecting this information will be made clear to you at the
+              time of collection. If you contact us directly, we may receive
+              additional information such as your name, email address, phone
+              number, the contents of your message, and any other information
+              you choose to provide. When you register for an account, we may
+              ask for your contact information, including items such as your
+              name, company name, address, email address, and telephone number.
+              <br />
+
+              <span>How We Use Your Information:</span> We use the information
+              we collect for various purposes, including providing, operating,
+              and maintaining our website, improving and personalizing user
+              experiences, understanding and analyzing website usage, developing
+              new products and services, communicating with users, and sending
+              updates and promotional information. We may also use your
+              information to prevent fraud.
+              <br />
+
+              <span>Log Files: </span>
+              MyLlama follows standard procedures for using log files. These
+              files log visitors when they visit websites. The information
+              collected may include internet protocol (IP) addresses, browser
+              type, Internet Service Provider (ISP), date and time stamps,
+              referring/exit pages, and possibly the number of clicks. This
+              information is used for analyzing trends, administering the site,
+              tracking user movement, and gathering demographic information. The
+              collected information is not linked to any personally identifiable
+              information.
+              <br />
+
+              <span> Cookies and Web Beacons:</span>
+              Like many other websites, MyLlama uses cookies to enhance user
+              experiences and personalize web page content. Cookies store
+              information about visitors' preferences and the pages they access
+              or visit. This information is used to optimize the user experience
+              by customizing content based on the visitor's browser type and
+              other information.
+              <br />
+
+              <span> Advertising Partners Privacy Policies:</span>
+              Please consult the respective Privacy Policies of our advertising
+              partners for detailed information. Third-party ad servers or ad
+              networks may use technologies like cookies, JavaScript, or web
+              beacons to personalize advertising content and measure the
+              effectiveness of their campaigns. MyLlama has no access to or
+              control over these cookies used by third-party advertisers.
+              <br />
+
+              <span> Third-Party Privacy Policies:</span>
+              MyLlama's Privacy Policy does not apply to other advertisers or
+              websites. We recommend reviewing the Privacy Policies of
+              third-party ad servers for detailed information on their practices
+              and instructions on how to opt out of certain options. You can
+              also disable cookies through your browser settings. Visit your
+              browser's website for more information on managing cookies.
+              <br />
+
+              <span>
+                CCPA Privacy Rights (Do Not Sell My Personal Information):</span
+              >
+              Under the CCPA, California consumers have the right to request
+              disclosure of the categories and specific pieces of personal data
+              collected by a business, request deletion of personal data, and
+              request a business that sells personal data not to sell their
+              personal data. If you would like to exercise any of these rights,
+              please contact us. We have one month to respond to your request.
+              <br />
+
+              <span> GDPR Data Protection Rights:</span>
+              You have the right to access, correct, erase, restrict processing,
+              object to processing, and request data portability. If you would
+              like to exercise any of these rights, please contact us. We have
+              one month to respond to your request.
+              <br />
+
+              <span>Children's Information:</span>
+              Protecting children's privacy online is important to us. We
+              encourage parents and guardians to monitor and guide their
+              children's online activities. MyLlama does not knowingly collect
+              personal identifiable information from children under the age of
+              13. If you believe that your child has provided personal
+              information on our website, please contact us immediately, and we
+              will make our best efforts to promptly remove such information
+              from our records.
             </p>
           </template>
         </the-disclaimer>
       </div>
-      
     </div>
   </footer>
 </template>
@@ -164,5 +246,16 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
+.privacy-policy-content {
+  text-align: justify;
+}
+span {
+  font-weight: bold;
+  color: black;
+}
+ul {
+  text-align: justify;
+  margin: auto;
+  width: 90%;
+}
 </style>

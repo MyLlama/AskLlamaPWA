@@ -39,9 +39,10 @@
         class="question-input"
         v-model="inputMessage"
         @keyup.enter="sendMessage"
-        placeholder="Ask a question..."
+        placeholder="How do I find peace in the middle of chaos?"
         ref="questionInput"
         :disabled="!selectedMasters.length || loading"
+        :title="showHover ? 'Select at least one master to ask question' : ''"
       />
       <button
         class="send-button"
@@ -58,6 +59,7 @@
 </template>
 
 <script>
+import user from "../assets/user.jpeg";
 import axios from "axios";
 export default {
   name: "AppChatbox",
@@ -73,11 +75,11 @@ export default {
   },
   data() {
     return {
+      showHover: true,
       inputMessage: "",
       messages: [],
       typingMessage: "",
-      userAvatar:
-        "https://secure.gravatar.com/avatar/84e1cab23663f968345fafb812c73a85?s=50&d=mm&r=g",
+      userAvatar: user,
       loading: false,
       conversationHistory: [], 
     };
@@ -190,6 +192,13 @@ export default {
   watch: {
     messages() {
       this.scrollToBottom();
+    },
+
+    selectedMasters: {
+      immediate: true,
+      handler(selectedMasters) {
+        this.showHover = selectedMasters.length === 0;
+      },
     },
   },
   mounted() {
@@ -317,8 +326,11 @@ input {
   transform: translateY(10px);
 }
 
-@media (max-width: 767px) {
+pre {
+  font-family: serif;
+}
 
+@media (max-width: 767px) {
   .author-image {
     width: 20px;
     height: 20px;
@@ -409,14 +421,35 @@ input {
 }
 
 .selected-master img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
 }
 
 .selected-master p {
-    text-align: center;
+  text-align: center;
+}
+
+/* Tooltip Styles */
+
+input[title] {
+  position: relative;
+}
+
+input[title]::after {
+  content: attr(title);
+  position: absolute;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: opacity 0.3s;
+}
+
+input:hover[title]::after {
+  opacity: 1;
 }
 
 .clear-chat-button {

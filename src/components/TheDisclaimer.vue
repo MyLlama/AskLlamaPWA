@@ -1,20 +1,22 @@
 <template>
   <div class="modal-backdrop">
-    <div class="modal">
-      <header class="modal-header">
-        <slot name="header"></slot>
-        <button type="button" class="btn-close" @click="close">x</button>
-      </header>
+    <transition name="slide">
+      <div class="modal">
+        <header class="modal-header">
+          <slot name="header"></slot>
+          <button type="button" class="btn-close" @click="close">×</button>
+        </header>
 
-      <section class="modal-body">
-        <slot name="body"></slot>
-      </section>
+        <section class="modal-body">
+          <slot name="body"></slot>
+        </section>
 
-      <footer class="modal-footer">
-        <slot name="footer"></slot>
-        <button type="button" class="btn-yellow" @click="close">Close</button>
-      </footer>
-    </div>
+        <footer class="modal-footer">
+          <slot name="footer"></slot>
+          <button type="button" class="btn-yellow" @click="close">Close</button>
+        </footer>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -34,12 +36,13 @@
 .modal {
   background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  max-width: 90vw;
-  max-height: 70vh;
-  z-index: 100;
+
+  border-radius: 20px;
+  height: 50vh;
+
 }
 
 .modal-header,
@@ -57,16 +60,19 @@
   font-size: 18px;
 }
 
-.modal-footer {
-  border-top: 1px solid #eeeeee;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 .modal-body {
   position: relative;
   padding: 20px 10px;
   color: #666666;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 15px;
+  background-color: #ffffff;
+  position: sticky;
+  bottom: 0;
 }
 
 .btn-close {
@@ -74,8 +80,8 @@
   top: 0;
   right: 0;
   border: none;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 30px;
+  padding: 20px;
   cursor: pointer;
   font-weight: bold;
   color: #f79311;

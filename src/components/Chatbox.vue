@@ -33,10 +33,10 @@
         <div class="lds-dual-ring"></div>
       </div>
     </div>
+    <div v-if="!selectedMasters.length" class="error-message">
+      Please select at least one master to enable chat.
+    </div>
     <form @submit.prevent="sendMessage">
-      <div v-if="!selectedMasters.length" class="error-message">
-        Please select at least one master to enable chat.
-      </div>
       <input
         type="text"
         class="question-input"
@@ -281,7 +281,7 @@ input {
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
-  bottom: 25vh;
+  bottom: 21vh;
   left: 2vh;
 }
 
@@ -469,7 +469,7 @@ input:hover[title]::after {
 .clear-chat-button {
     position: absolute;
     right: 15px;
-    top: 40vh;
+    top: 42vh;
     z-index: 10;
   }
 

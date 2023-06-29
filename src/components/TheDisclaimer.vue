@@ -37,6 +37,9 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  max-width: 90vw;
+  max-height: 70vh;
+  z-index: 100;
 }
 
 .modal-header,

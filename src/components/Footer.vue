@@ -24,7 +24,7 @@
             <ul class="custom-bullet">
               <li>
                 AskLlama is an artificial intelligence program that doesn’t take
-                itself too seriously. Hope you don't too 🙂🙃
+                itself too seriously. Hope you don't too 🙂 🙃
               </li>
               <br />
               <li>

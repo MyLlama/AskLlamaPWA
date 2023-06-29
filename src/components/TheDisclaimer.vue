@@ -1,6 +1,6 @@
 <template>
-  <div class="modal-backdrop">
-    <transition name="slide">
+  <transition name="modal-fade">
+    <div class="modal-backdrop">
       <div class="modal">
         <header class="modal-header">
           <slot name="header"></slot>
@@ -16,38 +16,44 @@
           <button type="button" class="btn-yellow" @click="close">Close</button>
         </footer>
       </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
 </template>
 
 <style scoped>
 .modal-backdrop {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
+  height: 100vh;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal {
+  width: 80%;
+  z-index: 100;
+  border: none;
   background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
+  box-shadow: 0 2px 8px rgba(240, 120, 18, 0.3);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 
-  border-radius: 20px;
+  border-radius: 12px;
   height: 50vh;
-
+  margin: 0 2vw;
 }
 
 .modal-header,
 .modal-footer {
-  padding: 15px;
+  background-color: #fcf7ee;
+  color: white;
+  padding: 0.7rem;
   display: flex;
 }
 
@@ -65,23 +71,26 @@
   padding: 20px 10px;
   color: #666666;
   flex-grow: 1;
-  overflow-y: auto;
+  overflow-x: hidden;
+  /* border: 3px solid black; */
+  text-align: justify;
 }
 
 .modal-footer {
+  background-color: #fcf7ee;
+
   padding: 15px;
-  background-color: #ffffff;
   position: sticky;
   bottom: 0;
 }
 
 .btn-close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1vw;
+  right: 2vw;
   border: none;
-  font-size: 30px;
-  padding: 20px;
+  font-size:2rem;
+  padding: 10px;
   cursor: pointer;
   font-weight: bold;
   color: #f79311;
@@ -102,6 +111,26 @@
 
 .btn-yellow:hover {
   letter-spacing: 3px;
+}
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+.modal-fade-enter-active {
+  animation: modal 0.5s ease-out;
+}
+.modal-fade-leave-active {
+  animation: modal 0.5s ease-in reverse;
+}
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 </style>
 

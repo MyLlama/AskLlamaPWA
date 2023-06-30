@@ -30,8 +30,8 @@
               <li>
                 As much as we love our AskLlama characters, they are not the
                 originals but only representations. Don't worry though, they
-                still have all the personality and charm of the original
-                Masters 😎
+                still have all the personality and charm of the original Masters
+                😎
               </li>
               <br />
               <li>
@@ -247,6 +247,7 @@ a:hover {
 }
 .privacy-policy-content {
   text-align: justify;
+  padding: 10px;
 }
 span {
   font-weight: bold;
@@ -256,15 +257,16 @@ ul {
   text-align: justify;
   margin: auto;
   width: 90%;
+  padding: 10px;
 }
 
 ul.custom-bullet {
-    list-style-type: none; /* Remove the default bullet point */
-  }
+  list-style-type: none; /* Remove the default bullet point */
+}
 
-  ul.custom-bullet li::before {
-    content: "✔ "; /* Add tick mark before each list item */
-    color: green; /* Change color of tick mark */
-    font-weight: bold; /* Make the tick mark bold */
-  }
+ul.custom-bullet li::before {
+  content: "✔ "; /* Add tick mark before each list item */
+  color: green; /* Change color of tick mark */
+  font-weight: bold; /* Make the tick mark bold */
+}
 </style>

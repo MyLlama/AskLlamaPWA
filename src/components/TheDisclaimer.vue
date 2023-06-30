@@ -39,8 +39,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
   border-radius: 20px;
   height: 50vh;
+
 }
 
 .modal-header,

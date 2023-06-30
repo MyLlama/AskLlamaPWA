@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <a href="https://www.myllama.co/" 
+      <a target="_blank" href="https://www.myllama.co/" 
       >
         <img
           class="header-logo"

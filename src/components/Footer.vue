@@ -211,9 +211,10 @@ export default {
   background-color: #f79311;
   color: #ffffff;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
+  /* padding-bottom: 2vh; */
   font-size: 0.9rem;
-  height: 10vh;
+  font-family: sans-serif;
 }
 
 .website {
@@ -225,6 +226,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  padding: 1rem;
 }
 
 .logo {

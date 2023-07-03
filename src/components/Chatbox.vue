@@ -11,6 +11,7 @@
         <transition name="typing" mode="out-in">
           <div>
             <div
+              class="chat-container"
               v-for="(message, index) in messages"
               :key="index"
               :class="[
@@ -33,9 +34,7 @@
         <div class="lds-dual-ring"></div>
       </div>
     </div>
-    <div v-if="!selectedMasters.length" class="error-message">
-      Please select at least one master to enable chat.
-    </div>
+ 
     <form @submit.prevent="sendMessage">
       <input
         type="text"
@@ -44,7 +43,6 @@
         @keyup.enter="sendMessage"
         placeholder="How do I find peace in the middle of chaos?"
         ref="questionInput"
-        :disabled="!selectedMasters.length || loading"
         :title="showHover ? 'Select at least one master to ask question' : ''"
       />
       <button
@@ -84,7 +82,7 @@ export default {
       typingMessage: "",
       userAvatar: user,
       loading: false,
-      conversationHistory: [], 
+      conversationHistory: [],
     };
   },
   methods: {
@@ -117,7 +115,7 @@ export default {
       const data = {
         model: "gpt-3.5-turbo",
         messages: [
-        ...this.conversationHistory,  // Include the existing conversation history
+          ...this.conversationHistory, // Include the existing conversation history
           { role: "system", content: master.prompt },
           { role: "user", content: `Q: ${prompt}\n` },
         ],
@@ -136,7 +134,7 @@ export default {
           role: "assistant",
           content: response.data.choices[0].message.content.trim(),
         });
-        
+
         return response.data.choices[0].message.content.trim();
       } catch (error) {
         console.error("Error calling ChatGPT API:", error);
@@ -235,13 +233,18 @@ export default {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 5px;
+  /* border: 1px solid black; */
 }
 .message-avatar {
+  padding: 5px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 5px;
+  background-color: #f5f5f5;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 form {
@@ -252,6 +255,7 @@ input {
   flex-grow: 1;
   margin-right: 1rem;
 }
+
 .question-input {
   width: 100%;
   padding: 0.5rem;
@@ -260,6 +264,12 @@ input {
   border: 1px solid #ccc;
   border-radius: 3px;
   outline: none;
+}
+
+/* Styling for the input */
+.question-input:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
 
 .send-button {
@@ -277,14 +287,20 @@ input {
 }
 
 .error-message {
-  color: red;
+  color: black;
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
-  bottom: 21vh;
+  bottom: 22vh;
   left: 2vh;
+  font-weight: bold;
+  font-family: sans-serif;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
 }
-
 
 .message {
   margin-bottom: 1rem;
@@ -294,7 +310,8 @@ input {
   white-space: pre-wrap;
   word-break: break-word;
   margin: 10px;
-  margin-top: 0px;
+  margin-top: 5px;
+  /* border: 2px solid black; */
 }
 
 .send-button:hover {
@@ -326,7 +343,8 @@ input {
   margin-bottom: 20px;
 }
 
-.master-message, .user-message {
+.master-message,
+.user-message {
   margin-left: 5px;
 }
 .typing-enter-active,
@@ -375,7 +393,8 @@ pre {
     margin-bottom: 1rem; /* Added to create space between messages */
   }
 
-  .master-message, .user-message {
+  .master-message,
+  .user-message {
     margin-left: 5px;
   }
 
@@ -467,24 +486,24 @@ input:hover[title]::after {
 }
 
 .clear-chat-button {
-    position: absolute;
-    right: 15px;
-    top: 42vh;
-    z-index: 10;
-  }
+  position: absolute;
+  right: 15px;
+  top: 42vh;
+  z-index: 10;
+}
 
-  .clear-chat-button button {
-    border: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    background-color: #f79311;
-  }
+.clear-chat-button button {
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #f79311;
+}
 
-  .clear-chat-button button:hover {
-    background-color: #d32f2f;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
-  }
+.clear-chat-button button:hover {
+  background-color: #d32f2f;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+}
 </style>

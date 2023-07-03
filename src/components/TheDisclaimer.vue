@@ -89,12 +89,23 @@
   top: 1vw;
   right: 2vw;
   border: none;
-  font-size:2rem;
-  padding: 10px;
+  font-size: 2rem;
+  height: 40px;
+  width: 40px;
+  /* padding: 10px; */
   cursor: pointer;
   font-weight: bold;
   color: #f79311;
   background: transparent;
+  border-radius: 50%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-color: white;
+}
+.btn-close:hover {
+  background-color: black;
+  color: white;
+  transition: 0.5s;
 }
 
 .btn-yellow {
@@ -105,12 +116,25 @@
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
-  width: 110px;
   margin: auto;
+  padding: 10px;
+  transition: 0.5s;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (max-width: 768px) {
+  .btn-close {
+    font-size: 1.5rem;
+    height: 30px;
+    width: 30px;
+    top: 3vw;
+  }
 }
 
 .btn-yellow:hover {
-  letter-spacing: 3px;
+  background-color: black;
+  letter-spacing: 0.5em;
+  border: none;
 }
 .modal-fade-enter,
 .modal-fade-leave-to {

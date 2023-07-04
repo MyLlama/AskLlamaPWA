@@ -9,13 +9,7 @@
       </div>
 
       <div class="legal">
-        <a
-          href="#"
-          class="link-text disclaimer"
-          @click.prevent="showDisclaimer"
-        >
-          Disclaimer
-        </a>
+        
         <the-disclaimer v-show="isDisclaimerVisible" @close="closeDisclaimer">
           <template v-slot:header>
             <h2>Disclaimer</h2>
@@ -23,8 +17,7 @@
           <template #body>
             <ul class="custom-bullet">
               <li>
-                AskLlama is an artificial intelligence program that doesn’t take
-                itself too seriously. Hope you don't too 🙂 🙃
+                Test example
               </li>
               <br />
               <li>

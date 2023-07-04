@@ -30,8 +30,8 @@
               <li>
                 As much as we love our AskLlama characters, they are not the
                 originals but only representations. Don't worry though, they
-                still have all the personality and charm of the original
-                Masters 😎
+                still have all the personality and charm of the original Masters
+                😎
               </li>
               <br />
               <li>
@@ -211,9 +211,10 @@ export default {
   background-color: #f79311;
   color: #ffffff;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
+  /* padding-bottom: 2vh; */
   font-size: 0.9rem;
-  height: 10vh;
+  font-family: sans-serif;
 }
 
 .website {
@@ -225,6 +226,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  padding: 1rem;
 }
 
 .logo {
@@ -247,6 +249,7 @@ a:hover {
 }
 .privacy-policy-content {
   text-align: justify;
+  padding: 10px;
 }
 span {
   font-weight: bold;
@@ -256,15 +259,16 @@ ul {
   text-align: justify;
   margin: auto;
   width: 90%;
+  padding: 10px;
 }
 
 ul.custom-bullet {
-    list-style-type: none; /* Remove the default bullet point */
-  }
+  list-style-type: none; /* Remove the default bullet point */
+}
 
-  ul.custom-bullet li::before {
-    content: "✔ "; /* Add tick mark before each list item */
-    color: green; /* Change color of tick mark */
-    font-weight: bold; /* Make the tick mark bold */
-  }
+ul.custom-bullet li::before {
+  content: "✔ "; /* Add tick mark before each list item */
+  color: green; /* Change color of tick mark */
+  font-weight: bold; /* Make the tick mark bold */
+}
 </style>

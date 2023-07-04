@@ -1,8 +1,7 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <a target="_blank" href="https://www.myllama.co/" 
-      >
+      <a target="_blank" href="https://www.myllama.co/">
         <img
           class="header-logo"
           src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png"
@@ -10,8 +9,8 @@
         />
       </a>
       <div class="header-text">
-        <h1>Ask Llama</h1>
-        <h2>Modern Problems. Timeless Answers</h2>
+        <h1>Ask Llama </h1>
+        <h2>Modern Problems. Timeless Answers </h2>
       </div>
       <button
         v-if="showInstallButton"
@@ -77,7 +76,7 @@ export default {
   border: none;
   color: #f79311;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   cursor: pointer;
   margin-left: 1rem;
   border-radius: 5px;
@@ -91,7 +90,7 @@ export default {
   background-color: #f79311;
   color: white;
   padding: 1rem;
-  height: 10vh;
+  /* height: 10vh; */
 }
 
 .header-container {
@@ -104,7 +103,7 @@ export default {
 }
 
 .header-logo {
-  width: 80px;
+  width: 60px;
   height: auto;
   margin-right: 20px;
 }
@@ -119,18 +118,18 @@ h2 {
 }
 
 h1 {
-  font-size: 2rem;
+  /* font-size: 2.5rem; */
   margin-bottom: 0.2rem;
 }
 
 h2 {
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .header-logo {
-    width: 40px !important;
+    width: 50px !important;
   }
   .header-container {
     justify-content: left;

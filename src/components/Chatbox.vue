@@ -561,6 +561,7 @@ input:hover[title]::after {
 
   margin-top: 5px;
   height: 24px;
+  
 }
 .clear-chat-button button {
   border: none;

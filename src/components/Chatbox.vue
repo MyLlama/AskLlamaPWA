@@ -44,6 +44,8 @@
         placeholder="How do I find peace in the middle of chaos?"
         ref="questionInput"
         :title="showHover ? 'Select at least one master to ask a question' : ''"
+        v-on:input="validateInput"
+        v-on:focus="validateInput"
       />
       <button
         class="send-button"
@@ -52,7 +54,8 @@
       >
         <i class="fa fa-paper-plane"></i>
       </button>
-      <div v-if="showHover" class="error-message">
+
+      <div v-if="showHover && touchedInput" class="error-message">
         Select the master to ask a question !!
       </div>
     </form>
@@ -81,17 +84,19 @@ export default {
   },
   data() {
     return {
-      showHover: true,
       inputMessage: "",
       messages: [],
       typingMessage: "",
       userAvatar: user,
       loading: false,
       conversationHistory: [],
+      touchedInput: false,
+      showHover: false,
     };
   },
   methods: {
     validateInput() {
+      this.touchedInput = true;
       this.showHover =
         this.inputMessage.trim().length > 0 &&
         this.selectedMasters.length === 0;

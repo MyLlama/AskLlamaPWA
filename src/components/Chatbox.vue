@@ -55,7 +55,10 @@
         <i class="fa fa-paper-plane"></i>
       </button>
 
-      <div v-if="showHover && touchedInput" class="error-message">
+      <div
+        v-if="showHover && touchedInput && errorMessageVisible"
+        class="error-message"
+      >
         Select the master to ask a question !!
       </div>
     </form>
@@ -92,14 +95,26 @@ export default {
       conversationHistory: [],
       touchedInput: false,
       showHover: false,
+      errorMessageVisible: false,
     };
   },
   methods: {
+    showErrorMessage() {
+      this.errorMessageVisible = true;
+
+      setTimeout(() => {
+        this.errorMessageVisible = false;
+      }, 2000);
+    },
     validateInput() {
       this.touchedInput = true;
       this.showHover =
         this.inputMessage.trim().length > 0 &&
         this.selectedMasters.length === 0;
+
+      if (this.showHover) {
+        this.showErrorMessage();
+      }
     },
 
     clearChat() {
@@ -328,6 +343,16 @@ input {
   padding: 5px;
   background-color: #ec1616;
   border-radius: 5px;
+  animation: bounce 0.01s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
+  }
 }
 
 .message {

@@ -34,27 +34,35 @@
         <div class="lds-dual-ring"></div>
       </div>
     </div>
- 
     <form @submit.prevent="sendMessage">
       <input
         type="text"
         class="question-input"
         v-model="inputMessage"
+        @input="validateInput"
         @keyup.enter="sendMessage"
         placeholder="How do I find peace in the middle of chaos?"
         ref="questionInput"
-        :title="showHover ? 'Select at least one master to ask question' : ''"
+        :title="showHover ? 'Select at least one master to ask a question' : ''"
+        v-on:input="validateInput"
+        v-on:focus="validateInput"
       />
       <button
         class="send-button"
-        @click="askQuestion"
+        @click="sendMessage"
         :disabled="!selectedMasters.length || loading"
       >
         <i class="fa fa-paper-plane"></i>
       </button>
+
+      <div v-if="showHover && touchedInput" class="error-message">
+        Select the master to ask a question !!
+      </div>
     </form>
     <div v-show="messages.length > 0" class="clear-chat-button">
-      <button @click="clearChat">Clear Chat</button>
+      <button @click="clearChat">
+        <img class="clear-chat-button-img" src="../assets/refresh.png" />
+      </button>
     </div>
   </div>
 </template>
@@ -76,16 +84,24 @@ export default {
   },
   data() {
     return {
-      showHover: true,
       inputMessage: "",
       messages: [],
       typingMessage: "",
       userAvatar: user,
       loading: false,
       conversationHistory: [],
+      touchedInput: false,
+      showHover: false,
     };
   },
   methods: {
+    validateInput() {
+      this.touchedInput = true;
+      this.showHover =
+        this.inputMessage.trim().length > 0 &&
+        this.selectedMasters.length === 0;
+    },
+
     clearChat() {
       this.messages = [];
       this.conversationHistory = [];
@@ -155,7 +171,19 @@ export default {
     },
 
     async sendMessage() {
-      if (!this.inputMessage || !this.selectedMasters.length) return;
+      if (!this.inputMessage) {
+        return;
+      }
+
+      if (!this.selectedMasters.length) {
+        this.showHover = true;
+        return;
+      }
+
+      // Clear the error message and send the message
+      this.showHover = false;
+
+      // if (!this.inputMessage || !this.selectedMasters.length) return;
 
       const userMessage = this.inputMessage;
       const userAvatar =
@@ -236,9 +264,9 @@ export default {
   /* border: 1px solid black; */
 }
 .message-avatar {
-  padding: 5px;
-  width: 24px;
-  height: 24px;
+  /* padding: 5px; */
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 5px;
@@ -287,7 +315,7 @@ input {
 }
 
 .error-message {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
@@ -298,7 +326,7 @@ input {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   padding: 5px;
-  background-color: #fff;
+  background-color: #ec1616;
   border-radius: 5px;
 }
 
@@ -401,6 +429,9 @@ pre {
   .master-message {
     padding-left: 5px; /* Added to create space around the Master's name */
   }
+  input::placeholder {
+    font-size: 13px;
+  }
 }
 .spinner {
   display: flex;
@@ -486,24 +517,40 @@ input:hover[title]::after {
 }
 
 .clear-chat-button {
+  justify-content: center;
   position: absolute;
-  right: 15px;
+  right: 30px;
+
   top: 42vh;
-  z-index: 10;
+  height: 32px;
+  width: 32px;
+  /* border: 1px solid red; */
+  border-radius: 50%;
+  background-color: #eeebeb;
 }
 
+.clear-chat-button-img {
+  width: 24px;
+  /* border: 1px solid red; */
+
+  margin-top: 5px;
+  height: 22px;
+}
 .clear-chat-button button {
   border: none;
-  color: white;
-  padding: 5px;
+  /* color: white; */
+  margin: 0px;
+  padding: 0px;
+  background-color: #eeebeb;
+
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  background-color: #f79311;
+  /* display: inline-block; */
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
-
-.clear-chat-button button:hover {
-  background-color: #d32f2f;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+.clear-chat-button:hover {
+  border: 2px solid orange;
 }
 </style>

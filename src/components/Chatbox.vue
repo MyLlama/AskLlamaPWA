@@ -64,7 +64,7 @@
     </form>
     <div v-show="messages.length > 0" class="clear-chat-button">
       <button @click="clearChat">
-        <img class="clear-chat-button-img" src="../assets/refresh.png" />
+        <img class="clear-chat-button-img" src="../assets/REFRESH2.png" />
       </button>
     </div>
   </div>
@@ -551,31 +551,30 @@ input:hover[title]::after {
   width: 32px;
   /* border: 1px solid red; */
   border-radius: 50%;
-  background-color: #eeebeb;
+  background-color: #ffebcd;
 }
 
 .clear-chat-button-img {
-  width: 24px;
+  width: 26px;
   /* border: 1px solid red; */
+  background-color: #ffebcd;
 
   margin-top: 5px;
-  height: 22px;
+  height: 24px;
 }
 .clear-chat-button button {
   border: none;
-  /* color: white; */
   margin: 0px;
   padding: 0px;
-  background-color: #eeebeb;
-
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   border-radius: 50%;
   align-items: center;
+  background-color: #ffebcd;
+
   justify-content: center;
 }
-.clear-chat-button:hover {
+/* .clear-chat-button:hover {
   border: 2px solid orange;
-}
+} */
 </style>

@@ -55,13 +55,16 @@
         <i class="fa fa-paper-plane"></i>
       </button>
 
-      <div v-if="showHover && touchedInput" class="error-message">
+      <div
+        v-if="showHover && touchedInput && errorMessageVisible"
+        class="error-message"
+      >
         Select the master to ask a question !!
       </div>
     </form>
     <div v-show="messages.length > 0" class="clear-chat-button">
       <button @click="clearChat">
-        <img class="clear-chat-button-img" src="../assets/refresh.png" />
+        <img class="clear-chat-button-img" src="../assets/REFRESH2.png" />
       </button>
     </div>
   </div>
@@ -92,14 +95,26 @@ export default {
       conversationHistory: [],
       touchedInput: false,
       showHover: false,
+      errorMessageVisible: false,
     };
   },
   methods: {
+    showErrorMessage() {
+      this.errorMessageVisible = true;
+
+      setTimeout(() => {
+        this.errorMessageVisible = false;
+      }, 2000);
+    },
     validateInput() {
       this.touchedInput = true;
       this.showHover =
         this.inputMessage.trim().length > 0 &&
         this.selectedMasters.length === 0;
+
+      if (this.showHover) {
+        this.showErrorMessage();
+      }
     },
 
     clearChat() {
@@ -328,6 +343,16 @@ input {
   padding: 5px;
   background-color: #ec1616;
   border-radius: 5px;
+  animation: bounce 0.01s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
+  }
 }
 
 .message {
@@ -526,31 +551,31 @@ input:hover[title]::after {
   width: 32px;
   /* border: 1px solid red; */
   border-radius: 50%;
-  background-color: #eeebeb;
+  background-color: #ffebcd;
 }
 
 .clear-chat-button-img {
-  width: 24px;
+  width: 26px;
   /* border: 1px solid red; */
+  background-color: #ffebcd;
 
   margin-top: 5px;
-  height: 22px;
+  height: 24px;
+  
 }
 .clear-chat-button button {
   border: none;
-  /* color: white; */
   margin: 0px;
   padding: 0px;
-  background-color: #eeebeb;
-
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   border-radius: 50%;
   align-items: center;
+  background-color: #ffebcd;
+
   justify-content: center;
 }
-.clear-chat-button:hover {
+/* .clear-chat-button:hover {
   border: 2px solid orange;
-}
+} */
 </style>

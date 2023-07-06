@@ -1,6 +1,6 @@
 <template>
   <div class="masters">
-    <h4>Select the Masters you want to talk to</h4>
+    <h4>Select Masters</h4>
     <div class="masters-container">
       <div class="masters-list">
         <div
@@ -224,8 +224,7 @@ p {
   font-family: sans-serif;
   width: 100%;
   text-align: center;
-  text-transform: uppercase;
-  font-size: 17px;
+  font-size: 20px;
 }
 .masters-container {
   display: flex;
@@ -302,8 +301,6 @@ p {
 .master img {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-
-
 }
 
 h4 {
@@ -312,9 +309,9 @@ h4 {
 
 .master.selected img {
   box-shadow: rgb(44, 55, 67) 0px 20px 30px -10px;
-  
-  transform: scale(1.20);
-  border: 1px solid orange;
+
+  transform: scale(1.2);
+  border: 1px solid #f07812;
 }
 
 @media (max-width: 768px) {

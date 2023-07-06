@@ -31,7 +31,8 @@
         </transition>
       </div>
       <div class="spinner" v-if="loading">
-        <div class="lds-dual-ring"></div>
+        <!-- <div class="lds-dual-ring"></div> -->
+        <img style="width: 200px" src="../assets/output-onlinegiftools.gif" />
       </div>
     </div>
     <form @submit.prevent="sendMessage">
@@ -64,7 +65,7 @@
     </form>
     <div v-show="messages.length > 0" class="clear-chat-button">
       <button @click="clearChat">
-        <img class="clear-chat-button-img" src="../assets/REFRESH2.png" />
+        <img class="clear-chat-button-img" src="../assets/refresh.png" />
       </button>
     </div>
   </div>
@@ -262,7 +263,7 @@ export default {
   text-align: left;
   word-wrap: break-word;
   white-space: pre-wrap;
-  background: blanchedalmond;
+  background: white;
 }
 
 @media (max-width: 768px) {
@@ -292,49 +293,58 @@ export default {
 
 form {
   display: flex;
+  gap: 10px;
 }
 
 input {
   flex-grow: 1;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .question-input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1rem;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: none;
+  border-radius: 50px;
   outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-/* Styling for the input */
 .question-input:focus {
-  border-color: #2196f3;
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .send-button {
-  background-color: #90ee90;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2196f3;
   color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 12px;
-  padding: 8px 16px;
+  transition: background-color 0.3s ease;
 }
 
+.send-button:hover {
+  background-color: #0d8aed;
+}
+
+.input-container {
+  display: flex;
+  gap: 1rem;
+}
 .error-message {
   color: rgb(255, 255, 255);
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
-  bottom: 22vh;
+  bottom: 23vh;
   left: 2vh;
   font-weight: bold;
   font-family: sans-serif;
@@ -367,29 +377,6 @@ input {
   /* border: 2px solid black; */
 }
 
-.send-button:hover {
-  background-color: #77dd77;
-}
-
-.send-button i {
-  margin-right: 0 rem;
-}
-
-.send-button {
-  background-color: #2196f3;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.send-button:hover {
-  background-color: #1976d2;
-}
-
 .master-message,
 .user-message {
   display: flex;
@@ -414,7 +401,11 @@ input {
 pre {
   font-family: serif;
 }
-
+/* @media (min-width: 600px) and (max-width: 1000px) {
+  .error-message {
+    bottom: 22vh;
+  }
+} */
 @media (max-width: 767px) {
   .author-image {
     width: 20px;
@@ -477,8 +468,8 @@ pre {
   height: 100%;
   margin: 1px;
   border-radius: 50%;
-  border: 3px solid #2196f3;
-  border-color: #2196f3 transparent #2196f3 transparent;
+  border: 4px solid #f07812;
+  border-color: #f07812 transparent #f07812 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -545,23 +536,22 @@ input:hover[title]::after {
   justify-content: center;
   position: absolute;
   right: 30px;
-
   top: 42vh;
   height: 32px;
   width: 32px;
-  /* border: 1px solid red; */
+  background-color: #ffff;
   border-radius: 50%;
-  background-color: #ffebcd;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 }
 
 .clear-chat-button-img {
   width: 26px;
-  /* border: 1px solid red; */
-  background-color: #ffebcd;
-
   margin-top: 5px;
-  height: 24px;
-  
+  background-color: #ffff;
+  padding: 2px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .clear-chat-button button {
   border: none;
@@ -571,11 +561,11 @@ input:hover[title]::after {
   text-decoration: none;
   border-radius: 50%;
   align-items: center;
-  background-color: #ffebcd;
+  background-color: #ffff;
 
   justify-content: center;
 }
-/* .clear-chat-button:hover {
-  border: 2px solid orange;
-} */
+.clear-chat-button-img:hover {
+  border: 2px solid #f07812;
+}
 </style>

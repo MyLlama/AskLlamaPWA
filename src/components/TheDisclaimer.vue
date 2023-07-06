@@ -95,11 +95,11 @@
   /* padding: 10px; */
   cursor: pointer;
   font-weight: bold;
-  color: #f79311;
+  color: #f07812;
   background: transparent;
   border-radius: 50%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
   background-color: white;
 }
 .btn-close:hover {
@@ -110,8 +110,8 @@
 
 .btn-yellow {
   color: white;
-  background: #f79311;
-  border: 1px solid #f79311;
+  background: #f07812;
+  border: 1px solid #f07812;
   border-radius: 21px;
   text-transform: uppercase;
   font-weight: bold;

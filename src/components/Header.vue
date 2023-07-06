@@ -74,7 +74,7 @@ export default {
   display: none;
   background-color: #ffffff;
   border: none;
-  color: #f79311;
+  color: #f07812;
   font-size: 1rem;
   padding: 0.5rem 1.5rem;
   cursor: pointer;
@@ -87,7 +87,7 @@ export default {
 }
 
 .header {
-  background-color: #f79311;
+  background-color: #F07812;
   color: white;
   padding: 1rem;
   /* height: 10vh; */

@@ -9,8 +9,8 @@
         />
       </a>
       <div class="header-text">
-        <h1>Ask Llama </h1>
-        <h2>Modern Problems. Timeless Answers </h2>
+        <h1>Ask Llama</h1>
+        <h2>Modern Problems. Timeless Answers</h2>
       </div>
       <button
         v-if="showInstallButton"
@@ -87,9 +87,9 @@ export default {
 }
 
 .header {
-  background-color: #F07812;
+  background-color: #f07812;
   color: white;
-  padding: 1rem;
+  padding: 10px;
   /* height: 10vh; */
 }
 

@@ -392,7 +392,7 @@ input {
 
 .pre-wrap {
   white-space: pre-wrap;
-  word-break: break-word;
+  /* word-break: break-word; */
   margin: 10px;
   text-align: justify;
   margin-top: 5px;

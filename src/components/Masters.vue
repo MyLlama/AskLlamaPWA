@@ -209,7 +209,8 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 25vh;
+  height: 23vh;
+  /* border: 1px solid black; */
 }
 p {
   font-family: sans-serif;
@@ -319,7 +320,9 @@ h4 {
     width: 50px;
     height: 50px;
   }
-
+  .masters {
+    height: 23vh;
+  }
   .masters h4 {
     font-size: 15px;
   }

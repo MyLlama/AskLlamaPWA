@@ -264,6 +264,16 @@ export default {
   word-wrap: break-word;
   white-space: pre-wrap;
   background: white;
+  height: 90%;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background: white;
+  display: flex;
 }
 
 @media (max-width: 768px) {
@@ -324,15 +334,26 @@ input {
   background-color: #2196f3;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .send-button:hover {
-  background-color: #0d8aed;
+  /* background-color: #0d8aed; */
+  background: #1e3c72; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2a5298,
+    #1e3c72
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2a5298,
+    #1e3c72
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .input-container {
@@ -344,7 +365,7 @@ input {
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
-  bottom: 23vh;
+  bottom: 24vh;
   left: 2vh;
   font-weight: bold;
   font-family: sans-serif;
@@ -371,8 +392,9 @@ input {
 
 .pre-wrap {
   white-space: pre-wrap;
-  word-break: break-word;
+  /* word-break: break-word; */
   margin: 10px;
+  text-align: justify;
   margin-top: 5px;
   /* border: 2px solid black; */
 }
@@ -407,6 +429,10 @@ pre {
   }
 } */
 @media (max-width: 767px) {
+  .error-message {
+    bottom: 22vh;
+    left: 2vh;
+  }
   .author-image {
     width: 20px;
     height: 20px;
@@ -421,15 +447,17 @@ pre {
     flex-direction: column;
     justify-content: space-between;
     height: 45vh;
+    /* border: 1px solid red; */
   }
 
   .send-button {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
+    border-radius: 50%;
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
   }
-  .send-button:hover {
+  /* .send-button:hover {
     background-color: #3f9a40;
-  }
+  } */
   .user-message,
   .master-message {
     display: flex;
@@ -443,7 +471,7 @@ pre {
   }
 
   .master-message {
-    padding-left: 5px; /* Added to create space around the Master's name */
+    /* padding-left: 5px; Added to create space around the Master's name */
   }
   input::placeholder {
     font-size: 13px;
@@ -485,6 +513,7 @@ pre {
   overflow-y: hidden;
   height: 40vh;
   margin-bottom: 5px;
+  /* border: 1px solid red; */
 }
 
 .spinner {

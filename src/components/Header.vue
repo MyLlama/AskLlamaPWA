@@ -131,6 +131,17 @@ h2 {
   .header-logo {
     width: 50px !important;
   }
+
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.1rem;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
   .header-container {
     justify-content: left;
     flex-wrap: inherit;

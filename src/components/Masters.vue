@@ -267,7 +267,7 @@ p {
 .masters-list {
   display: flex;
   gap: 0.3rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   /* border: 1px solid red; */
 }
 
@@ -321,10 +321,16 @@ h4 {
     height: 50px;
   }
   .masters {
-    height: 23vh;
+    height: 19vh;
   }
   .masters h4 {
     font-size: 15px;
+  }
+  .masters-list {
+    display: flex;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    /* border: 1px solid red; */
   }
 }
 </style>

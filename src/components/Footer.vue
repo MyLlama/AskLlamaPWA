@@ -7,15 +7,15 @@
       <!-- <div class="website">
         <a target="_blank" href="https://www.myllama.co">www.myllama.co</a>
       </div> -->
-      <!-- 
+
       <div class="legal">
-        <a
+        <!-- <a
           href="#"
           class="link-text disclaimer"
           @click.prevent="showDisclaimer"
         >
           Disclaimer
-        </a>
+        </a> -->
         <the-disclaimer v-show="isDisclaimerVisible" @close="closeDisclaimer">
           <template v-slot:header>
             <h2>Disclaimer</h2>
@@ -59,14 +59,14 @@
           </template>
         </the-disclaimer>
 
-        <a
+        <!-- <a
           href="#"
           class="link-text privacy-policy"
           @click.prevent="showPrivacyPolicy"
         >
           Privacy Policy
-        </a>
-        <the-disclaimer
+        </a> -->
+        <!-- <the-disclaimer
           v-show="isPrivacyPolicyVisible"
           @close="closePrivacyPolicy"
         >
@@ -176,10 +176,10 @@
               from our records.
             </p>
           </template>
-        </the-disclaimer>
-      </div> -->
-      <p
-        >Made with ❤️ by
+        </the-disclaimer> -->
+      </div>
+      <p class="new_footer">
+        Made with ❤️ by
         <a target="_blank" href="https://www.myllama.co">Llama</a>
       </p>
     </div>
@@ -187,12 +187,12 @@
 </template>
 
 <script>
-// import TheDisclaimer from "./TheDisclaimer.vue";
+import TheDisclaimer from "./TheDisclaimer.vue";
 export default {
   name: "AppFooter",
-  // components: {
-  //   TheDisclaimer,
-  // },
+  components: {
+    TheDisclaimer,
+  },
   data() {
     return {
       isDisclaimerVisible: true,
@@ -226,18 +226,19 @@ export default {
   font-family: sans-serif;
   /* height: 10vh; */
 }
-
+.new_footer {
+  padding: 5px;
+}
 .website {
   text-decoration: underline;
 }
 
-.footer-container {
+/* .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  /* padding: 10px; */
-}
+} */
 
 .logo {
   font-size: 1.2rem;

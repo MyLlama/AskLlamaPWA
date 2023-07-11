@@ -136,9 +136,8 @@ export default {
 
     async getGptResponse(prompt, master) {
       console.log("Getting GPT response for prompt:", prompt);
-
-      const apiKey = process.env.VUE_APP_OPENAI_API_KEY;
       // Use the environment variable
+      const apiKey = process.env.VUE_APP_OPENAI_API_KEY;
       const apiEndpoint = "https://api.openai.com/v1/chat/completions";
       const headers = {
         "Content-Type": "application/json",

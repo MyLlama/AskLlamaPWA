@@ -32,7 +32,7 @@
       </div>
       <div class="spinner" v-if="loading">
         <!-- <div class="lds-dual-ring"></div> -->
-        <img style="width: 200px" src="../assets/output-onlinegiftools.gif" />
+        <img style="width: 100px" src="../assets/new.gif" />
       </div>
     </div>
     <form @submit.prevent="sendMessage">
@@ -137,7 +137,8 @@ export default {
     async getGptResponse(prompt, master) {
       console.log("Getting GPT response for prompt:", prompt);
 
-      const apiKey = process.env.VUE_APP_OPENAI_API_KEY; // Use the environment variable
+      const apiKey = process.env.VUE_APP_OPENAI_API_KEY;
+      // Use the environment variable
       const apiEndpoint = "https://api.openai.com/v1/chat/completions";
       const headers = {
         "Content-Type": "application/json",
@@ -365,7 +366,7 @@ input {
   font-size: 0.8em;
   margin-bottom: 0.5em;
   position: absolute;
-  bottom: 24vh;
+  bottom: 15vh;
   left: 2vh;
   font-weight: bold;
   font-family: sans-serif;
@@ -423,14 +424,17 @@ input {
 pre {
   font-family: serif;
 }
-/* @media (min-width: 600px) and (max-width: 1000px) {
-  .error-message {
-    bottom: 22vh;
-  }
-} */
+.chatbox-content {
+  position: relative;
+  overflow-y: hidden;
+  height: 52vh;
+  margin-bottom: 5px;
+  /* border: 1px solid red; */
+}
+
 @media (max-width: 767px) {
   .error-message {
-    bottom: 22vh;
+    bottom: 15vh;
     left: 2vh;
   }
   .author-image {
@@ -446,7 +450,13 @@ pre {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 45vh;
+    height: 60vh;
+    /* border: 1px solid red; */
+  }
+  .chatbox-content {
+    position: relative;
+    overflow-y: hidden;
+    height: 57vh;
     /* border: 1px solid red; */
   }
 
@@ -507,13 +517,6 @@ pre {
   100% {
     transform: rotate(360deg);
   }
-}
-.chatbox-content {
-  position: relative;
-  overflow-y: hidden;
-  height: 40vh;
-  margin-bottom: 5px;
-  /* border: 1px solid red; */
 }
 
 .spinner {

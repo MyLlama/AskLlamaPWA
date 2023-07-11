@@ -1,13 +1,13 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-      <div class="logo">
-        <strong>Powered by Llama</strong>
-      </div>
-      <div class="website">
+      <!-- <div class="logo">
+        <strong>Powered by </strong>
+      </div> -->
+      <!-- <div class="website">
         <a target="_blank" href="https://www.myllama.co">www.myllama.co</a>
-      </div>
-
+      </div> -->
+      <!-- 
       <div class="legal">
         <a
           href="#"
@@ -22,6 +22,8 @@
           </template>
           <template #body>
             <ul class="custom-bullet">
+              <br />
+
               <li>
                 AskLlama is an artificial intelligence program that doesn’t take
                 itself too seriously. Hope you don't too 🙂 🙃
@@ -47,6 +49,8 @@
                 cup of tea.
               </li>
               <br />
+
+              <br />
               <p>
                 Ask away, but don't sue us if it gets sassy! We're just a bunch
                 of llamas trying to make your day a little brighter!
@@ -54,6 +58,7 @@
             </ul>
           </template>
         </the-disclaimer>
+
         <a
           href="#"
           class="link-text privacy-policy"
@@ -68,6 +73,7 @@
           <template v-slot:header>
             <h2>Privacy Policy</h2>
           </template>
+
           <template #body>
             <p class="privacy-policy-content">
               At MyLlama, we value the privacy of our visitors. This Privacy
@@ -171,18 +177,22 @@
             </p>
           </template>
         </the-disclaimer>
-      </div>
+      </div> -->
+      <p
+        >Made with ❤️ by
+        <a target="_blank" href="https://www.myllama.co">Llama</a>
+      </p>
     </div>
   </footer>
 </template>
 
 <script>
-import TheDisclaimer from "./TheDisclaimer.vue";
+// import TheDisclaimer from "./TheDisclaimer.vue";
 export default {
   name: "AppFooter",
-  components: {
-    TheDisclaimer,
-  },
+  // components: {
+  //   TheDisclaimer,
+  // },
   data() {
     return {
       isDisclaimerVisible: true,
@@ -208,7 +218,7 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: #F07812;
+  background-color: #f07812;
   color: #ffffff;
   text-align: center;
   margin-top: 1vh;
@@ -226,7 +236,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .logo {

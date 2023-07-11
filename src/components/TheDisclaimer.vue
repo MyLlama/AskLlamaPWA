@@ -4,7 +4,7 @@
       <div class="modal">
         <header class="modal-header">
           <slot name="header"></slot>
-          <button type="button" class="btn-close" @click="close">×</button>
+          <!-- <button type="button" class="btn-close" @click="close">×</button> -->
         </header>
 
         <section class="modal-body">
@@ -43,7 +43,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
+  /* border: 1px solid red; */
   border-radius: 12px;
   height: 50vh;
   margin: 0 2vw;
@@ -53,22 +53,23 @@
 .modal-footer {
   background-color: #fcf7ee;
   color: white;
-  padding: 0.7rem;
-  display: flex;
+  /* padding: 0.7rem; */
+  /* display: flex; */
 }
 
 .modal-header {
   position: relative;
   border-bottom: 1px solid #eeeeee;
-  color: #666666;
+  /* color: #666666; */
   justify-content: center;
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
+  color: black;
 }
 
 .modal-body {
   position: relative;
-  padding: 20px 10px;
+  /* padding: 20px 10px; */
   color: #666666;
   flex-grow: 1;
   overflow-x: hidden;
@@ -79,7 +80,7 @@
 .modal-footer {
   background-color: #fcf7ee;
 
-  padding: 15px;
+  padding: 5px;
   position: sticky;
   bottom: 0;
 }
@@ -117,17 +118,20 @@
   font-weight: bold;
   letter-spacing: 1px;
   margin: auto;
-  padding: 10px;
+  padding: 8px;
   transition: 0.5s;
   padding-left: 20px;
   padding-right: 20px;
 }
 @media (max-width: 768px) {
-  .btn-close {
+  /* .btn-close {
     font-size: 1.5rem;
     height: 30px;
     width: 30px;
     top: 3vw;
+  } */
+  .modal-header {
+    font-size: 13px;
   }
 }
 

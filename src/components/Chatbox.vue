@@ -136,9 +136,8 @@ export default {
 
     async getGptResponse(prompt, master) {
       console.log("Getting GPT response for prompt:", prompt);
-
-      const apiKey = process.env.VUE_APP_OPENAI_API_KEY;
       // Use the environment variable
+      const apiKey = process.env.VUE_APP_OPENAI_API_KEY;
       const apiEndpoint = "https://api.openai.com/v1/chat/completions";
       const headers = {
         "Content-Type": "application/json",
@@ -431,10 +430,49 @@ pre {
   margin-bottom: 5px;
   /* border: 1px solid red; */
 }
+.clear-chat-button {
+  justify-content: center;
+  position: absolute;
+  right: 30px;
+  top: 36vh;
+  height: 32px;
+  width: 32px;
+  background-color: #ffff;
+  border-radius: 50%;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+}
+
+.clear-chat-button-img {
+  width: 26px;
+  margin-top: 5px;
+  background-color: #ffff;
+  padding: 2px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.clear-chat-button button {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  align-items: center;
+  background-color: #ffff;
+
+  justify-content: center;
+}
+.clear-chat-button-img:hover {
+  border: 2px solid #f07812;
+}
 
 @media (max-width: 767px) {
+  .clear-chat-button {
+    top: 31vh;
+  }
   .error-message {
-    bottom: 15vh;
+    bottom: 13vh;
     left: 2vh;
   }
   .author-image {
@@ -450,13 +488,13 @@ pre {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 60vh;
+    height: 61vh;
     /* border: 1px solid red; */
   }
   .chatbox-content {
     position: relative;
     overflow-y: hidden;
-    height: 57vh;
+    height: 58vh;
     /* border: 1px solid red; */
   }
 
@@ -562,42 +600,5 @@ input[title]::after {
 
 input:hover[title]::after {
   opacity: 1;
-}
-
-.clear-chat-button {
-  justify-content: center;
-  position: absolute;
-  right: 30px;
-  top: 42vh;
-  height: 32px;
-  width: 32px;
-  background-color: #ffff;
-  border-radius: 50%;
-  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-}
-
-.clear-chat-button-img {
-  width: 26px;
-  margin-top: 5px;
-  background-color: #ffff;
-  padding: 2px;
-  height: 26px;
-  border-radius: 50%;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-.clear-chat-button button {
-  border: none;
-  margin: 0px;
-  padding: 0px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-  align-items: center;
-  background-color: #ffff;
-
-  justify-content: center;
-}
-.clear-chat-button-img:hover {
-  border: 2px solid #f07812;
 }
 </style>

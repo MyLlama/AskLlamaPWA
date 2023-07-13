@@ -42,7 +42,7 @@
         v-model="inputMessage"
         @input="validateInput"
         @keyup.enter="sendMessage"
-        placeholder="How do I find peace in the middle of chaos?"
+        placeholder="How do I find peace in the middle of chaos ?"
         ref="questionInput"
         :title="showHover ? 'Select at least one master to ask a question' : ''"
         v-on:input="validateInput"
@@ -321,6 +321,7 @@ input {
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 .question-input:focus {
@@ -368,13 +369,13 @@ input {
   bottom: 15vh;
   left: 2vh;
   font-weight: bold;
-  font-family: sans-serif;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   padding: 5px;
   background-color: #ec1616;
   border-radius: 5px;
   animation: bounce 0.01s infinite alternate;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 @keyframes bounce {

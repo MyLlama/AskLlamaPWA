@@ -18,7 +18,7 @@
         </a> -->
         <the-disclaimer v-show="isDisclaimerVisible" @close="closeDisclaimer">
           <template v-slot:header>
-            <h2>Disclaimer</h2>
+            <h2 style="font-family: 'Trebuchet MS', sans-serif">Disclaimer</h2>
           </template>
           <template #body>
             <ul class="custom-bullet">
@@ -229,9 +229,10 @@ export default {
   /* height: 10vh; */
 }
 .new_footer {
+  font-family: "Trebuchet MS", sans-serif;
+
   padding: 5px;
   font-weight: bold;
-  font-family: sans-serif;
 }
 .website {
   text-decoration: underline;

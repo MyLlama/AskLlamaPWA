@@ -180,7 +180,9 @@
       </div>
       <p class="new_footer">
         Made with ❤️ by
-        <a target="_blank" href="https://www.myllama.co">Llama</a>
+        <a target="_blank" style="color: black" href="https://www.myllama.co"
+          >Llama</a
+        >
       </p>
     </div>
   </footer>
@@ -218,8 +220,8 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: #f07812;
-  color: #ffffff;
+  /* background-color: #f07812; */
+  color: black;
   text-align: center;
   margin-top: 1vh;
   font-size: 0.9rem;
@@ -228,6 +230,8 @@ export default {
 }
 .new_footer {
   padding: 5px;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 .website {
   text-decoration: underline;
@@ -281,5 +285,10 @@ ul.custom-bullet li::before {
   content: "✔ "; /* Add tick mark before each list item */
   color: green; /* Change color of tick mark */
   font-weight: bold; /* Make the tick mark bold */
+}
+@media (max-width: 767px) {
+  .new_footer {
+    margin-top: 2vh;
+  }
 }
 </style>

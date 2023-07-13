@@ -4,10 +4,12 @@
       <a target="_blank" href="https://www.myllama.co/">
         <img
           class="header-logo"
-          src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png"
           alt="Ask Llama"
+          src="../assets/llama-lgo.png"
         />
       </a>
+      <!-- src="https://www.myllama.co/wp-content/uploads/2023/01/LAMA-logo_Final-01.png" -->
+
       <div class="header-text">
         <h1>Ask Llama</h1>
         <h2>Modern Problems. Timeless Answers</h2>

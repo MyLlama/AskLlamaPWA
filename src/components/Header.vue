@@ -92,6 +92,7 @@ export default {
   background-color: #f07812;
   color: white;
   padding: 10px;
+  /* font-family: Arial, Helvetica, sans-serif; */
   /* height: 10vh; */
 }
 
@@ -122,11 +123,15 @@ h2 {
 h1 {
   /* font-size: 2.5rem; */
   margin-bottom: 0.2rem;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
+  /* font-family: Tahoma; */
+  font-family: 'Trebuchet MS', sans-serif;
+
 }
 
 @media (max-width: 768px) {

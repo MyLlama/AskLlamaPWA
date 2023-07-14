@@ -179,9 +179,11 @@
         </the-disclaimer> -->
       </div>
       <p class="new_footer">
-        <a target="_blank" style="color: black" href="https://www.myllama.co"
-          >Awaken your inner wisdom with Llama's training programs !</a
-        >
+        <a target="_blank" href="https://www.myllama.co">
+          <!-- 𝘑𝘰𝘪𝘯 𝘓𝘭𝘢𝘮𝘢'𝘴 𝘱𝘳𝘰𝘨𝘳𝘢𝘮𝘴. 𝘈𝘸𝘢𝘬𝘦𝘯 𝘺𝘰𝘶𝘳 𝘪𝘯𝘯𝘦𝘳 𝘞𝘪𝘴𝘥𝘰𝘮🌻 -->
+
+          <i>Join Llama's programs, Awaken your inner Wisdom</i>🌻
+        </a>
       </p>
     </div>
   </footer>
@@ -220,47 +222,40 @@ export default {
 <style scoped>
 .footer {
   /* background-color: #f07812; */
-  color: black;
   text-align: center;
   margin-top: 1vh;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: sans-serif;
   /* height: 10vh; */
 }
-.new_footer {
-  font-family: "Trebuchet MS", sans-serif;
 
+/* .new_footer {
   padding: 5px;
-  font-weight: bold;
-}
+} */
+
 .website {
   text-decoration: underline;
+  color: #000000;
 }
-
-/* .footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-} */
 
 .logo {
   font-size: 1.2rem;
 }
 
 .link-text {
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
   margin: 0 10px;
 }
 
 a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #000000;
 }
 .privacy-policy-content {
   text-align: justify;
@@ -289,7 +284,22 @@ ul.custom-bullet li::before {
 @media (max-width: 767px) {
   .new_footer {
     margin-top: 2vh;
-    font-size: 12.5px;
+    font-size: 13.5px;
+    color: #000000;
+    padding: 5px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .new_footer::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 100%;
+    background-color: orange;
   }
 }
 </style>

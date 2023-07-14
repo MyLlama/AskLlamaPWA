@@ -469,6 +469,11 @@ pre {
 }
 
 @media (max-width: 767px) {
+  .pre-wrap {
+ 
+    margin-top: -1px;
+    /* border: 2px solid black; */
+  }
   .clear-chat-button {
     top: 31vh;
   }

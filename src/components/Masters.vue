@@ -1,6 +1,6 @@
 <template>
   <div class="masters">
-    <h4 style="font-family:'Trebuchet MS', sans-serif;">Select Masters</h4>
+    <h4>Select Masters</h4>
     <div class="masters-container">
       <div class="masters-list">
         <div
@@ -205,7 +205,6 @@ export default {
 
 <style scoped>
 .masters {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,7 +216,6 @@ p {
   font-family: sans-serif;
   font-size: 13px;
   /* font-family: 'Trebuchet MS', sans-serif; */
-
 }
 
 .master.selected p {
@@ -227,11 +225,11 @@ p {
   margin-bottom: 1rem;
 }
 .masters h4 {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   width: 100%;
   text-align: center;
   font-size: 20px;
-  
+  font-family: "Trebuchet MS", sans-serif;
 }
 .masters-container {
   display: flex;
@@ -241,7 +239,6 @@ p {
   position: relative;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    
 }
 
 .masters-container:before,
@@ -257,7 +254,6 @@ p {
 .masters-container:before {
   left: 0;
   background: linear-gradient(90deg, rgb(123, 121, 121) 0%, transparent 100%);
-  
 }
 
 .ellipsis {
@@ -270,14 +266,13 @@ p {
 .masters-container:after {
   right: 0;
   /* background: linear-gradient(-90deg, #fff 0%, transparent 100%); */
-  
 }
 
 .masters-list {
   display: flex;
   gap: 0.3rem;
   padding: 0.5rem 0;
-  
+
   /* border: 1px solid red; */
 }
 
@@ -289,7 +284,6 @@ p {
   text-align: center;
   min-width: 100px;
   /* border: 1px solid red; */
-
 }
 
 .master img {
@@ -324,7 +318,6 @@ h4 {
 
   transform: scale(1.2);
   border: 1px solid #f07812;
-  
 }
 
 @media (max-width: 768px) {

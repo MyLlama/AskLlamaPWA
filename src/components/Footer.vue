@@ -179,9 +179,8 @@
         </the-disclaimer> -->
       </div>
       <p class="new_footer">
-        Made with ❤️ by
         <a target="_blank" style="color: black" href="https://www.myllama.co"
-          >Llama</a
+          >Awaken your inner wisdom with Llama's training programs !</a
         >
       </p>
     </div>
@@ -290,6 +289,7 @@ ul.custom-bullet li::before {
 @media (max-width: 767px) {
   .new_footer {
     margin-top: 2vh;
+    font-size: 12.5px;
   }
 }
 </style>

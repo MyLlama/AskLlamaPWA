@@ -182,7 +182,7 @@
         <a target="_blank" href="https://www.myllama.co">
           <!-- 𝘑𝘰𝘪𝘯 𝘓𝘭𝘢𝘮𝘢'𝘴 𝘱𝘳𝘰𝘨𝘳𝘢𝘮𝘴. 𝘈𝘸𝘢𝘬𝘦𝘯 𝘺𝘰𝘶𝘳 𝘪𝘯𝘯𝘦𝘳 𝘞𝘪𝘴𝘥𝘰𝘮🌻 -->
 
-          <i>Join Llama's programs, Awaken your inner Wisdom</i>🌻
+          <i>Join Llama's programs to awaken your inner wisdom</i>🌻
         </a>
       </p>
     </div>
@@ -267,8 +267,8 @@ span {
 }
 ul {
   text-align: justify;
-  margin: auto;
-  width: 90%;
+  margin: left;
+  width: 95%;
   padding: 10px;
 }
 
@@ -283,13 +283,19 @@ ul.custom-bullet li::before {
 }
 @media (max-width: 767px) {
   .new_footer {
-    margin-top: 2vh;
+    margin-top: 1vh;
     font-size: 13.5px;
     color: #000000;
     padding: 5px;
     position: relative;
     display: inline-block;
     text-decoration: none;
+  }
+  ul {
+    text-align: justify;
+    margin: left;
+    width: 90%;
+    padding: 10px;
   }
 
   .new_footer::after {

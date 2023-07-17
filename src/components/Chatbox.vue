@@ -427,8 +427,8 @@ pre {
 .chatbox-content {
   position: relative;
   overflow-y: hidden;
-  height: 52vh;
-  margin-bottom: 5px;
+  height: 58vh;
+  /* margin-bottom: 5px; */
   /* border: 1px solid red; */
 }
 .clear-chat-button {
@@ -470,7 +470,6 @@ pre {
 
 @media (max-width: 767px) {
   .pre-wrap {
- 
     margin-top: -1px;
     /* border: 2px solid black; */
   }
@@ -494,13 +493,13 @@ pre {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 61vh;
+    height: 65vh;
     /* border: 1px solid red; */
   }
   .chatbox-content {
     position: relative;
     overflow-y: hidden;
-    height: 58vh;
+    height: 60vh;
     /* border: 1px solid red; */
   }
 

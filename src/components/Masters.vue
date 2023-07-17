@@ -1,6 +1,5 @@
 <template>
   <div class="masters">
-    <h4>Select Masters</h4>
     <div class="masters-container">
       <div class="masters-list">
         <div
@@ -209,7 +208,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 23vh;
+  height: 18vh;
   /* border: 1px solid black; */
 }
 p {
@@ -272,7 +271,7 @@ p {
   display: flex;
   gap: 0.3rem;
   padding: 0.5rem 0;
-
+  margin-top: 10px;
   /* border: 1px solid red; */
 }
 
@@ -326,7 +325,7 @@ h4 {
     height: 50px;
   }
   .masters {
-    height: 19vh;
+    height: 15vh;
   }
   .masters h4 {
     font-size: 15px;

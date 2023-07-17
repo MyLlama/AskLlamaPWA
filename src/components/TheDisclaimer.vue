@@ -47,6 +47,7 @@
   border-radius: 12px;
   height: 50vh;
   margin: 0 2vw;
+
 }
 
 .modal-header,
@@ -68,6 +69,7 @@
 }
 
 .modal-body {
+  
   position: relative;
   /* padding: 20px 10px; */
   color: #666666;
@@ -79,7 +81,6 @@
 
 .modal-footer {
   background-color: #fcf7ee;
-
   padding: 5px;
   position: sticky;
   bottom: 0;
@@ -93,14 +94,12 @@
   font-size: 2rem;
   height: 40px;
   width: 40px;
-  /* padding: 10px; */
   cursor: pointer;
   font-weight: bold;
   color: #f07812;
   background: transparent;
   border-radius: 50%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
   background-color: white;
 }
 .btn-close:hover {

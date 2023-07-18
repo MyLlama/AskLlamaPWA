@@ -76,7 +76,7 @@
   flex-grow: 1;
   overflow-x: hidden;
   /* border: 3px solid black; */
-  text-align: justify;
+  text-align: left;
 }
 
 .modal-footer {

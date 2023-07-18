@@ -266,7 +266,7 @@ span {
   color: black;
 }
 ul {
-  text-align: justify;
+  /* text-align: justify; */
   margin: left;
   width: 95%;
   padding: 10px;
@@ -292,9 +292,9 @@ ul.custom-bullet li::before {
     text-decoration: none;
   }
   ul {
-    text-align: justify;
-    margin: left;
-    width: 90%;
+    /* text-align: justify; */
+    margin: auto;
+    width: 95%;
     padding: 10px;
   }
 

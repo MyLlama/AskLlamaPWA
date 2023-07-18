@@ -435,7 +435,7 @@ pre {
   justify-content: center;
   position: absolute;
   right: 30px;
-  top: 36vh;
+  top: 32vh;
   height: 32px;
   width: 32px;
   background-color: #ffff;
@@ -474,7 +474,8 @@ pre {
     /* border: 2px solid black; */
   }
   .clear-chat-button {
-    top: 31vh;
+    top: 26.5vh;
+    right: 26px;
   }
   .error-message {
     bottom: 13vh;
